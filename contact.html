@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Lightchaser</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+  </head>
+  <body>
+    <div data-include-path="components/header.html"></div>
+
+    <main>
+      <section class="sub-visual">
+        <h2>CONTACT US</h2>
+        <p>Let's create something brilliant.</p>
+      </section>
+
+      <section class="contact-area">
+        <div class="inner">
+          <div class="contact-info">
+            <h3>Inquiry</h3>
+            <p class="desc">
+              프로젝트 의뢰 및 협업 문의는<br />
+              이메일 또는 아래 폼을 이용해 주세요.
+            </p>
+
+            <ul class="info-list">
+              <li>
+                <span class="label">E-mail</span>
+                <a href="mailto:contact@lightchaser.kr" class="value"
+                  >contact@lightchaser.kr</a
+                >
+              </li>
+              <li>
+                <span class="label">Phone</span>
+                <span class="value">+82 10-0000-0000</span>
+              </li>
+              <li>
+                <span class="label">Base</span>
+                <span class="value">Seoul, Republic of Korea</span>
+              </li>
+            </ul>
+
+            <div class="sns-links">
+              <a href="#" target="_blank">Instagram</a>
+              <a href="#" target="_blank">YouTube</a>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form action="#">
+              <div class="form-group">
+                <label for="name">Name / Company</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="이름 또는 회사명을 입력하세요"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-mail Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="답변받을 이메일 주소"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category">
+                  <option value="">프로젝트 유형 선택</option>
+                  <option value="mf">Media Facade</option>
+                  <option value="pf">Performance</option>
+                  <option value="ex">Exhibition</option>
+                  <option value="etc">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  rows="5"
+                  placeholder="프로젝트 내용, 일정 등 문의사항을 남겨주세요"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-send">SEND MESSAGE</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="map-section">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.923862299878!2d126.9768613153106!3d37.57013897979685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca297a027987b%3A0xc354b35d6447e137!2z광화문!5e0!3m2!1sko!2skr!4v1600000000000!5m2!1sko!2skr"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        >
+        </iframe>
+      </section> -->
+    </main>
+
+    <div data-include-path="components/footer.html"></div>
+
+    <script src="js/include.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

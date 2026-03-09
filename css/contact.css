@@ -1,0 +1,116 @@
+/* =========================================
+   CONTACT (contact.html)
+   ========================================= */
+.contact-area {
+  padding: 100px 0;
+  background: var(--bg-color);
+}
+.contact-area .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 80px;
+}
+
+.contact-info {
+  flex: 1;
+}
+.contact-info h3 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.contact-info .desc {
+  margin-bottom: 50px;
+}
+
+.info-list .label {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.info-list .value {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.contact-form {
+  flex: 1.5;
+}
+.form-group label {
+  font-size: 13px;
+  color: var(--text-sub);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  color: var(--text-main);
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-bottom-color: var(--text-main);
+}
+.contact-form select option {
+  background: #fff;
+  color: #000;
+}
+
+.btn-send {
+  margin-top: 30px;
+  background: var(--text-main);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  padding: 18px 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.map-section {
+  width: 100%;
+  height: 450px;
+  filter: grayscale(100%);
+  opacity: 0.9;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .contact-area .inner {
+    flex-direction: column;
+    gap: 60px;
+  }
+}
+/* 기본(라이트) */
+header .gnb a {
+  color: rgba(0, 0, 0, 0.72);
+}
+header .logo img {
+  filter: none;
+}
+
+/* 자동 반전 상태 */
+header.is-invert .gnb a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  filter: none !important;
+}
+header.is-invert .gnb a:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+header.is-invert .logo img {
+  filter: invert(1) brightness(1.15) !important;
+}

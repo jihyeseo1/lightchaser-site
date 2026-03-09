@@ -1,0 +1,194 @@
+/* =========================================
+   ABOUT (about.html)
+   ========================================= */
+.about-section {
+  padding: 120px 20px;
+  text-align: center;
+}
+.about-section .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.about-section h3 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
+}
+
+.definition .desc {
+  font-size: 20px;
+  font-weight: 400;
+}
+.definition strong {
+  color: var(--text-main);
+  border-bottom: 2px solid var(--text-main);
+}
+
+.philosophy-bg {
+  height: 70vh;
+  background-image: url("../assets/images/about/visual-bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.philosophy-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.philo-content {
+  position: relative;
+  z-index: 10;
+}
+.philo-content h3 {
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.philo-content p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+.about-view-list.custom-bullet {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-view-list.custom-bullet li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  font-size: 1.6rem;
+  color: #ffffff;
+  z-index: 10;
+}
+
+.about-view-list.custom-bullet li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.diff-item {
+  background: var(--white);
+  padding: 50px 30px;
+  border-radius: 20px;
+  transition: transform 0.3s;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+.diff-item:hover {
+  transform: translateY(-10px);
+}
+.diff-item .num {
+  display: block;
+  font-size: 14px;
+  color: var(--text-sub);
+  margin-bottom: 15px;
+}
+.diff-item h4 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.diff-item p {
+  color: var(--text-sub);
+}
+
+.process-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.process-steps .step {
+  width: 150px;
+  text-align: center;
+}
+.process-steps .circle {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  line-height: 58px;
+  font-weight: 600;
+  color: var(--text-sub);
+  background: var(--white);
+  transition: 0.3s;
+}
+.step:hover .circle {
+  border-color: var(--text-main);
+  background: var(--text-main);
+  color: var(--white);
+}
+.process-steps .line {
+  width: 80px;
+  height: 1px;
+  background: var(--border);
+  margin: 0 15px 40px 15px;
+}
+
+@media (max-width: 768px) {
+  .diff-grid {
+    grid-template-columns: 1fr;
+  }
+  .process-steps {
+    flex-direction: column;
+  }
+  .process-steps .line {
+    width: 1px;
+    height: 40px;
+    margin: 20px 0;
+  }
+}
+.about-section.closing {
+  padding: 120px 0 160px;
+  text-align: center;
+}
+
+.closing-line {
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: 1.5;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 40px;
+}
+
+.closing-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 52px;
+  padding: 0 24px;
+  border: 1px solid #111;
+  border-radius: 999px;
+  color: #111;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+
+.btn-line:hover {
+  background: #111;
+  color: #fff;
+}

@@ -1,0 +1,1374 @@
+/* =========================================
+   1. 기본 설정 & 폰트
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+
+:root {
+  --bg-color: #f5f5f7; /* 애플 스타일 오프화이트 */
+  --white: #ffffff; /* 카드 배경 */
+  --text-main: #1d1d1f; /* 진한 차콜 */
+  --text-sub: #86868b; /* 그레이 */
+  --border: #d2d2d7; /* 테두리 */
+  --accent: #000000; /* 포인트 블랙 */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+ul,
+li {
+  list-style: none;
+}
+/* Serif for titles (English-focused) */
+.main-visual h2,
+.sub-visual h2,
+.scene .content-text h3,
+.project-detail .hero-txt h2,
+.project-detail .flow-title h3,
+.project-detail .flow-text h4 {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  letter-spacing: -0.5px;
+}
+
+/* =========================================
+      2. 헤더 (PC & Mobile 공통)
+      ========================================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+header .inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+/* 로고 사이즈 조절 */
+header .logo a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+header .logo img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+/* PC 메뉴 스타일 */
+header .gnb ul {
+  display: flex;
+  gap: 30px;
+}
+header .gnb a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  opacity: 0.8;
+}
+header .gnb a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* =========================================
+      3. 공통 레이아웃
+      ========================================= */
+main {
+  padding-top: 60px;
+  min-height: 100vh;
+}
+section {
+  position: relative;
+}
+
+/* 서브 페이지 타이틀 영역 */
+.sub-visual {
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--bg-color);
+}
+.sub-visual h2 {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+.sub-visual p {
+  font-size: 20px;
+  color: var(--text-sub);
+}
+
+/* 푸터 */
+footer {
+  padding: 60px 0;
+  text-align: center;
+  background: var(--white);
+  border-top: 1px solid #e5e5ea;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+/* =========================================
+      4. 메인 페이지 (index.html)
+      ========================================= */
+.main-visual {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--white);
+  position: relative; /* <- 이거 꼭 필요 */
+}
+.main-visual h2 {
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  margin: 20px 0 20px; /* 위/아래 명확히 */
+}
+.main-visual p {
+  font-size: 24px;
+  color: var(--text-sub);
+}
+/* 로고가 주인공 */
+.hero-logo {
+  width: min(70vw, 720px); /* 가로도 살짝 줄이고 */
+  max-height: 42svh; /* 핵심: 높이를 제한 */
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.scroll-guide {
+  position: absolute;
+  bottom: 40px;
+  font-size: 13px;
+  color: var(--text-sub);
+  animation: bounce 2s infinite;
+  left: 50%;
+  transform: translateX(-50%); /* 가운데 정렬 */
+  font-size: 13px;
+  color: var(--text-sub);
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* 스티키 스크롤 영역 */
+.sticky-container {
+  height: 500vh;
+  background-color: var(--bg-color);
+}
+.sticky-frame {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-color);
+}
+.scene.active {
+  opacity: 1;
+  z-index: 10;
+}
+
+.scene .bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
+/* 하단 플로팅 캡슐: 테두리 없이 투명하게 */
+.scene .content-box {
+  position: absolute;
+  bottom: 8%; /* 바닥 쪽으로 배치 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+
+  /* 가로로 긴 캡슐 형태 */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 25px;
+  border-radius: 50px; /* 동그란 형태 */
+
+  /* 배경 투명 유리 효과 (테두리 삭제) */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: none; /* 테두리 제거 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  width: auto;
+  white-space: nowrap;
+}
+
+/* 1. 인트로 텍스트 전용: 화면 가로/세로 정중앙 배치 */
+.scene .content-text {
+  position: absolute;
+  top: 50%; /* 세로 기준 50% */
+  left: 50%; /* 가로 기준 50% */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* 자기 자신의 절반만큼 이동하여 정중앙 고정 */
+  z-index: 20;
+  text-align: center;
+  width: 100%; /* 텍스트 정렬을 위한 너비 확보 */
+}
+/* 2. 인트로 타이틀 스타일 */
+.scene .content-text h3 {
+  font-size: 56px; /* PC 기준 시원한 크기 */
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 25px; /* 본문과의 간격 */
+  color: var(--text-main);
+  /* 배경이 흰색인 경우 그림자 생략, 이미지가 있다면 아래 주석 해제 */
+  /* text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); */
+}
+
+/* 3. 인트로 본문 스타일 */
+.scene .content-text p {
+  font-size: 22px;
+  color: var(--text-main);
+  opacity: 0.8;
+}
+
+/* 텍스트 스타일 */
+/* 캡슐 안의 프로젝트 이름 */
+.scene h3 {
+  font-size: 18px; /* 크기를 작고 세련되게 */
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+.scene .content-text h3 {
+  font-size: 56px;
+  line-height: 1.2;
+}
+.scene .content-text p {
+  font-size: 22px;
+  color: var(--text-main);
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.8);
+}
+
+/* 캡슐 안의 버튼 */
+.btn-view {
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--text-main);
+  color: var(--white);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: none; /* 그림자 제거하여 미니멀하게 */
+}
+.btn-view:hover {
+  transform: scale(1.05);
+  background: #000;
+}
+
+/* 우측 인디케이터 */
+.indicators {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.indicators .dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 점 그림자 강화 */
+}
+.indicators .dot.active {
+  background: var(--text-main);
+  transform: scale(1.2);
+}
+
+/* 하단 컨택트 섹션 */
+.bottom-contact {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+  text-align: center;
+}
+.bottom-contact h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.btn-contact {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--text-main);
+  padding-bottom: 4px;
+}
+/* =========================================
+   Individual Works Marquee
+   ========================================= */
+
+.individual-works {
+  padding: 150px 0;
+  background-color: var(--white);
+  overflow: hidden; /* 슬라이드가 화면 밖으로 나가는 것 방지 */
+}
+
+/* 섹션 타이틀 중앙 정렬 */
+.individual-works .section-title {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+/* 슬라이더 컨테이너 */
+.marquee-container {
+  width: 100%;
+  display: flex;
+}
+
+/* 슬라이더 트랙: 실제로 움직이는 부분 */
+.marquee-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scrollMarquee 40s linear infinite; /* 40초 동안 한 바퀴 재생 */
+}
+
+/* 마우스 올리면 일시 정지 (선택 사항) */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* 개별 카드: 이미지를 크게 보여줌 */
+.work-card {
+  width: 500px; /* PC 기준 큰 이미지 크기 */
+  height: 350px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.work-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.work-card:hover img {
+  transform: scale(1.05);
+}
+
+/* 애니메이션 정의 */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 15px));
+  } /* 트랙의 절반만큼 이동 */
+}
+
+/* 반응형 여백 (아이패드 & 모바일) */
+@media (max-width: 1024px) {
+  .individual-works {
+    padding: 100px 0;
+  }
+  .individual-works .inner {
+    padding: 0 60px;
+  } /* 요청하신 태블릿 여백 */
+  .work-card {
+    width: 400px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .individual-works .inner {
+    padding: 0 7%;
+  } /* 요청하신 모바일 여백 */
+  .work-card {
+    width: 300px;
+    height: 210px;
+    border-radius: 16px;
+  }
+  .marquee-track {
+    gap: 20px;
+  }
+}
+/* =========================================
+      5. 프로젝트 페이지 (project.html)
+      ========================================= */
+.project-area {
+  max-width: 1400px; /* 너무 넓지 않게 조정하여 몰입감 향상 */
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+.proj-item.hide {
+  display: none;
+} /* 필터 기능 필수 */
+
+.filter-menu {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.btn-filter {
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 20px;
+  padding: 5px 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+/* 활성화 상태: 아래에 아주 얇은 점이나 선으로 표시 */
+.btn-filter.active,
+.btn-filter:hover {
+  color: var(--text-main);
+  font-weight: 700;
+}
+.btn-filter.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--text-main);
+  border-radius: 50%;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3열 배치 */
+  gap: 50px 30px; /* 세로 간격을 더 넓게 주어 여유로운 느낌 */
+}
+.proj-item.hide {
+  display: none;
+}
+.proj-item {
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* 썸네일: 부드러운 라운딩과 애플 특유의 미세한 그림자 */
+.proj-item .thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px; /* 조금 더 둥글게 */
+  overflow: hidden;
+  background-color: #eee;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* 아주 연한 그림자 */
+  transition: box-shadow 0.4s ease;
+}
+.proj-item .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.proj-item:hover .thumb {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); /* 호버 시 그림자 깊어짐 */
+}
+
+.proj-item .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.proj-item:hover .thumb img {
+  transform: scale(1.05); /* 과하지 않은 확대 */
+}
+/* 3. 정보 텍스트: 타이포그래피 강조 */
+.proj-item .info h3 {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.proj-item .info .tag {
+  font-size: 13px;
+  color: var(--text-sub);
+  font-weight: 400;
+}
+
+/* =========================================
+      6. About 페이지 (about.html)
+      ========================================= */
+.about-section {
+  padding: 120px 20px;
+  text-align: center;
+}
+.about-section .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.about-section h3 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
+}
+
+.definition .desc {
+  font-size: 24px;
+  font-weight: 400;
+}
+.definition strong {
+  color: var(--text-main);
+  border-bottom: 2px solid var(--text-main);
+}
+
+.philosophy-bg {
+  height: 70vh;
+  background-image: url("../assets/images/about/visual-bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.philosophy-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+.philo-content {
+  position: relative;
+  z-index: 10;
+}
+.philo-content h3 {
+  font-size: 48px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.philo-content p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.diff-item {
+  background: var(--white);
+  padding: 50px 30px;
+  border-radius: 20px;
+  transition: transform 0.3s;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+.diff-item:hover {
+  transform: translateY(-10px);
+}
+.diff-item .num {
+  display: block;
+  font-size: 14px;
+  color: var(--text-sub);
+  margin-bottom: 15px;
+}
+.diff-item h4 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.diff-item p {
+  color: var(--text-sub);
+}
+
+.process-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.process-steps .step {
+  width: 150px;
+  text-align: center;
+}
+.process-steps .circle {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  line-height: 58px;
+  font-weight: 600;
+  color: var(--text-sub);
+  background: var(--white);
+  transition: 0.3s;
+}
+.step:hover .circle {
+  border-color: var(--text-main);
+  background: var(--text-main);
+  color: var(--white);
+}
+.process-steps .line {
+  width: 80px;
+  height: 1px;
+  background: var(--border);
+  margin: 0 15px 40px 15px;
+}
+
+/* =========================================
+      7. Team 페이지 (team.html)
+      ========================================= */
+.team-area {
+  padding-bottom: 150px;
+}
+/* 1. 멤버 열(Row): 구분선을 아주 연하게 처리 */
+.member-row {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: 480px;
+  background-color: var(--white); /* 배경을 흰색으로 하여 프로필 강조 */
+}
+
+/* 2. 왼쪽 프로필 정보: 타이포그래피 중심의 미니멀 디자인 */
+.profile-info {
+  width: 350px;
+  padding: 80px 50px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.profile-info .id {
+  display: block;
+  font-size: 12px;
+  font-family: "SF Mono", "Courier New", monospace; /* 기술적 느낌의 폰트 */
+  color: var(--text-sub);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.profile-info h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+.profile-info .role {
+  font-size: 15px;
+  font-weight: 500;
+  color: #b29146 !important; /* 골드 톤을 조금 더 차분한 샌드 골드로 변경 */
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.profile-info .desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-main);
+  opacity: 0.7;
+  margin-bottom: auto; /* SNS 링크를 바닥으로 밀어냄 */
+}
+.profile-info .sns a {
+  font-size: 13px;
+  color: var(--text-sub);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.3s;
+}
+.profile-info .sns a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+/* 3. 오른쪽 가로 스크롤 갤러리 */
+.work-gallery {
+  flex-grow: 1;
+  display: flex;
+  align-items: center; /* 이미지 세로 중앙 정렬 */
+  padding: 0 40px;
+  overflow-x: auto;
+  background-color: var(--bg-color); /* 배경을 오프화이트로 하여 대비 효과 */
+  scrollbar-width: none;
+}
+.work-gallery::-webkit-scrollbar {
+  display: none;
+}
+.work-item {
+  min-width: 420px;
+  height: 280px; /* 고정 높이로 리듬감 부여 */
+  margin-right: 30px;
+  border-radius: 20px; /* 애플 스타일의 깊은 라운딩 */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.work-item:hover {
+  /* transform: translateY(-10px); */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 4. 채용 박스: 세련된 다크 카드 형태 */
+.recruit-box {
+  max-width: 1200px;
+  margin: 100px auto 0;
+  padding: 100px 40px;
+  background-color: #1d1d1f; /* 애플의 깊은 다크 그레이 */
+  border-radius: 30px;
+  text-align: center;
+  color: var(--white);
+}
+.recruit-box h3 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--white);
+}
+
+.recruit-box p {
+  font-size: 18px;
+  opacity: 0.6;
+  margin-bottom: 40px;
+}
+.btn-mail {
+  display: inline-block;
+  padding: 15px 45px;
+  background-color: var(--white);
+  color: #000;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 0.2s;
+}
+
+.btn-mail:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+      8. Contact 페이지 (contact.html)
+      ========================================= */
+.contact-area {
+  padding: 100px 0;
+  background: var(--bg-color);
+}
+.contact-area .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 80px;
+}
+
+.contact-info {
+  flex: 1;
+}
+.contact-info h3 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.contact-info .desc {
+  margin-bottom: 50px;
+}
+.info-list .label {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.info-list .value {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.contact-form {
+  flex: 1.5;
+}
+.form-group label {
+  font-size: 13px;
+  color: var(--text-sub);
+  display: block;
+  margin-bottom: 8px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  color: var(--text-main);
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-bottom-color: var(--text-main);
+}
+.contact-form select option {
+  background: #fff;
+  color: #000;
+}
+.btn-send {
+  margin-top: 30px;
+  background: var(--text-main);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  padding: 18px 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.map-section {
+  width: 100%;
+  height: 450px;
+  filter: grayscale(100%);
+  opacity: 0.9;
+}
+/* =========================================
+   [WORKFLOW MASTER] Behance Cinematic Layout
+   ========================================= */
+
+/* 1. 기본 레이아웃 (와이드 확장) */
+.project-detail .inner {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 5vw;
+  box-sizing: border-box;
+}
+
+/* 2. 시네마틱 히어로 (기존 연출 보존) */
+.project-detail .detail-hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.project-detail .hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.project-detail .detail-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+.project-detail .hero-txt {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: #fff;
+}
+.project-detail .hero-txt h2 {
+  font-size: clamp(40px, 7vw, 90px);
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+
+/* 3. 디테일 인포 바 */
+.project-detail .detail-info {
+  padding: 100px 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.project-detail .detail-info .inner {
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+}
+.project-detail .info-item {
+  text-align: center;
+}
+.project-detail .info-item span {
+  display: block;
+  font-size: 12px;
+  color: #ff4132;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+.project-detail .info-item p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* 4. 워크플로우 그룹 디자인 */
+.project-detail .flow-group {
+  padding: 200px 0;
+}
+.project-detail .flow-title {
+  text-align: center;
+  margin-bottom: 150px;
+}
+.project-detail .flow-title h3 {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+/* [핵심] 워크플로우 아이템 (좌측 텍스트 + 우측 대형 그리드) */
+.project-detail .flow-item {
+  display: flex;
+  gap: 8vw;
+  margin-bottom: 300px;
+  position: relative;
+  align-items: flex-start;
+}
+
+/* 수직 워크플로우 가이드 선 */
+.project-detail .flow-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  width: 1px;
+  height: calc(100% + 250px);
+  background-color: rgba(255, 65, 50, 0.2);
+}
+
+.project-detail .flow-text {
+  flex: 0 0 350px; /* 텍스트 영역 확보 */
+  position: sticky;
+  top: 150px; /* 스크롤 시 텍스트 고정 (선택 사항) */
+}
+
+.project-detail .flow-text .step-num {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ff4132 !important;
+  margin-bottom: 30px;
+  display: block;
+  font-family: "SF Mono", monospace;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.project-detail .flow-text h4 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.project-detail .flow-text p {
+  font-size: 17px;
+  color: #86868b;
+  line-height: 1.8;
+}
+
+/* 5. 비핸스식 대형 미디어 그리드 */
+.project-detail .flow-media {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.project-detail .flow-media img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
+}
+
+/* 이미지 장수에 따른 다이내믹 그리드 */
+.project-detail .flow-media img:only-child {
+  grid-column: span 2;
+}
+.project-detail .flow-media img:first-child:nth-last-child(odd) {
+  grid-column: span 2;
+  margin-bottom: 20px;
+}
+
+/* 6. 테크 데이터 박스 */
+.project-detail .tech-box {
+  margin-top: 40px;
+  padding: 30px;
+  background: #f5f5f7;
+  border-radius: 20px;
+}
+.project-detail .tech-box h5 {
+  font-size: 11px;
+  color: #86868b;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.project-detail .tech-box p {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 7. 최종 아웃풋 (압도적 와이드) */
+.project-detail .final-output-box {
+  width: 100%;
+  margin-top: 100px;
+}
+
+/* 6. 크레딧 & 버튼 */
+.project-detail .detail-credits {
+  padding: 120px 0;
+  background: #f9f9f9;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.project-detail .credit-wrap {
+  max-width: 650px;
+  margin: 0 auto;
+}
+.project-detail .c-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.project-detail .c-line:last-child {
+  border-bottom: none;
+}
+.project-detail .back-to-list {
+  padding: 140px 0;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+}
+.project-detail .btn-back {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s;
+}
+.project-detail .btn-back:hover {
+  transform: translateY(-8px);
+}
+.project-detail .btn-back p {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 1024px) {
+  .project-detail .flow-item {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .project-detail .flow-item:not(:last-child)::after {
+    display: none;
+  }
+  .project-detail .flow-text {
+    flex: none;
+    width: 100%;
+  }
+  .project-detail .detail-info .inner {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+/* =========================================
+      9. 모바일 & 반응형 (Mobile Menu)
+      ========================================= */
+.btn-menu {
+  display: none;
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  z-index: 2000;
+}
+.btn-menu span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-main);
+  margin: 6px 0;
+  transition: 0.3s;
+}
+/* 모바일 대응 */
+@media (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  } /* 태블릿 2열 */
+  .member-row {
+    flex-direction: column;
+  }
+  .profile-info {
+    width: 100%;
+    padding: 60px 40px;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .work-gallery {
+    padding: 40px 20px;
+  }
+  .work-item {
+    min-width: 320px;
+    height: 220px;
+  }
+  /* 프로젝트 리스트 및 상세 페이지 내부 여백 강화 */
+  .project-area,
+  .detail-info .inner,
+  .detail-section .inner,
+  header .inner {
+    padding: 0 60px; /* 기존 40px에서 60px로 늘려 여유 확보 */
+  }
+
+  .project-grid {
+    gap: 40px 25px; /* 그리드 간격 미세 조정 */
+  }
+}
+@media (max-width: 768px) {
+  /* 모바일 헤더 */
+  header .inner {
+    padding: 0 20px;
+  }
+  .btn-menu {
+    display: block;
+  }
+
+  /* 모바일 메뉴 열림 효과 */
+  .gnb {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1500;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .gnb.active {
+    right: 0;
+  }
+  .gnb ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  .gnb a {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+  /* 화면이 작을 때는 고정값보다 % 단위를 섞는 것이 더 유연합니다. */
+  .project-area,
+  .detail-info .inner,
+  .detail-section .inner,
+  header .inner {
+    padding: 0 7%; /* 화면 너비의 7%를 좌우 여백으로 사용하여 답답함 해소 */
+  }
+
+  /* 프로젝트 상세 페이지 히어로 텍스트 여백 */
+  .hero-txt {
+    padding: 0 10%;
+  }
+
+  /* 최종 결과 그리드 간격 조정 */
+  .final-result-layout {
+    gap: 20px;
+  }
+
+  /* 목록으로 돌아가기 버튼 영역 */
+  .back-to-list {
+    padding: 80px 7%;
+  }
+
+  /* 햄버거 버튼 애니메이션 */
+  .btn-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  .btn-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .btn-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+
+  /* 모바일 레이아웃 조정 */
+  .project-grid,
+  .diff-grid {
+    grid-template-columns: 1fr;
+  }
+  .process-steps {
+    flex-direction: column;
+  }
+  .process-steps .line {
+    width: 1px;
+    height: 40px;
+    margin: 20px 0;
+  }
+  .member-row {
+    flex-direction: column;
+  }
+  .profile-info {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e5ea;
+  }
+  .work-item {
+    min-width: 300px;
+    height: 300px;
+  }
+  .contact-area .inner {
+    flex-direction: column;
+    gap: 60px;
+  }
+  @media (max-width: 768px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    } /* 모바일 1열 */
+    .sub-visual h2 {
+      font-size: 42px;
+    }
+    .filter-menu {
+      margin-bottom: 40px;
+    }
+    .btn-filter {
+      margin: 0 10px;
+      font-size: 14px;
+    }
+  }
+
+  /* 홈화면 박스 모바일 조정 */
+  .scene .content-box {
+    bottom: 10%;
+    padding: 8px 20px;
+    gap: 15px;
+  }
+  .scene h3 {
+    font-size: 15px;
+  }
+  .btn-view {
+    padding: 6px 15px;
+    font-size: 11px;
+  }
+  .scene .content-text h3 {
+    font-size: 32px; /* 모바일에서는 조금 더 작게 */
+  }
+  .scene .content-text p {
+    font-size: 18px;
+  }
+  /* 3. 초소형 기기 (iPhone SE 등 - 480px 이하) */
+  @media (max-width: 480px) {
+    .project-area,
+    .detail-info .inner,
+    .detail-section .inner,
+    header .inner {
+      padding: 0 20px; /* 최소한의 터치 영역 확보 */
+    }
+  }
+}
+header .gnb a {
+  font-family: "Inter", "Noto Sans KR", sans-serif;
+}

@@ -1,0 +1,293 @@
+/* =========================================
+   [CINEMATIC WORKFLOW] Behance Master Style
+   ========================================= */
+
+/* 상세 페이지 전용 이너 (와이드 확장) */
+.project-detail .inner {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 4vw;
+  box-sizing: border-box;
+}
+
+/* [1] 히어로: 영상 배경 위 제목 정중앙 */
+.project-detail .detail-hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-detail .hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.project-detail .detail-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+.project-detail .hero-txt {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: #fff;
+}
+.project-detail .hero-txt h2 {
+  font-size: clamp(40px, 7vw, 90px);
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+/* 3. 디테일 인포 바 */
+.project-detail .detail-info {
+  padding: 100px 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.project-detail .detail-info .inner {
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+}
+.project-detail .info-item {
+  text-align: center;
+}
+.project-detail .info-item span {
+  display: block;
+  font-size: 12px;
+  color: #ff4132;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+.project-detail .info-item p {
+  font-size: 20px;
+  font-weight: 500;
+}
+/* [2] 듀얼 플로우 레이아웃 (좌측 고정 레이블) */
+.flow-container {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #000;
+  background: #fff;
+}
+.flow-sidebar {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #000;
+}
+.sticky-label-wrapper {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: sticky;
+  top: 60px;
+  background: #fff;
+  z-index: 50;
+}
+.sticky-label-wrapper span {
+  font-size: 10px;
+  font-weight: 900;
+  color: #ff4132;
+}
+.sticky-label-wrapper h2 {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* [3] 우측 워크플로우 컨텐츠 */
+.flow-content {
+  width: 100%;
+}
+.step-card {
+  padding: 100px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+.step-header {
+  margin-bottom: 60px;
+  text-align: center;
+}
+.step-num {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ff4132;
+  margin-bottom: 20px;
+  display: block;
+}
+.step-header h4 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: -1.5px;
+}
+
+/* [4] 비핸스식 대형 그리드 시스템 */
+.step-media-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 30px;
+}
+.step-media-grid img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
+  display: block;
+  object-fit: cover;
+}
+
+/* 이미지 배치 가중치 */
+.img-full {
+  grid-column: span 12;
+  margin-bottom: 40px;
+}
+.img-main {
+  grid-column: span 8;
+}
+.img-sub {
+  grid-column: span 4;
+}
+
+/* [5] FINAL OUTPUT 전용 스타일 */
+.output-group {
+  padding: 200px 0;
+  background: #fff;
+}
+
+/* 모션 루프 그리드 */
+.motion-grid,
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 100px;
+}
+.gif-grid img {
+  border-radius: 12px;
+  border: 1px solid #000;
+}
+.motion-item span {
+  display: block;
+  font-family: "SF Mono", monospace;
+  font-size: 11px;
+  color: #86868b;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+.loop-video {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #000;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* 유튜브 와이드 박스 */
+.final-video-wrap {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+}
+.final-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* 고화질 갤러리 비대칭 그리드 */
+.output-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  margin-bottom: 150px;
+}
+.output-gallery img {
+  width: 100%;
+  border: 1px solid #000;
+  transition: 0.5s ease;
+}
+.out-big {
+  grid-column: span 8;
+}
+.out-side {
+  grid-column: span 4;
+}
+.out-mid {
+  grid-column: span 6;
+}
+
+/* =========================================
+   [DESKTOP ONLY] PC 와이드 스타일
+   ========================================= */
+@media (min-width: 1024px) {
+  .flow-container {
+    flex-direction: row;
+  }
+  .flow-sidebar {
+    width: 100px;
+    border-right: 1px solid #000;
+    border-bottom: none;
+  }
+  .sticky-label-wrapper {
+    flex-direction: column;
+    height: calc(100vh - 100px);
+    top: 100px;
+    padding: 40px 0;
+    justify-content: flex-start;
+  }
+  .sticky-label-wrapper h2 {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin-top: 30px;
+  }
+  .step-card {
+    padding: 150px 5vw;
+  }
+  .step-header {
+    text-align: left;
+  }
+}
+
+/* =========================================
+   [MOBILE ONLY] 모바일 대응
+   ========================================= */
+@media (max-width: 768px) {
+  .motion-grid,
+  .output-gallery,
+  .gif-grid,
+  .step-media-grid {
+    grid-template-columns: 1fr;
+  }
+  .out-big,
+  .out-side,
+  .out-mid,
+  .img-full,
+  .img-main,
+  .img-sub {
+    grid-column: span 1;
+  }
+}

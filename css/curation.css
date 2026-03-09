@@ -1,0 +1,621 @@
+/* =========================================
+   curation-open.css
+   가오픈(Soft Open) 전용 스타일
+   — curation.css 는 건드리지 않습니다.
+   — 나중에 정식 오픈 시 이 파일과
+     curation.html 의 <link> 한 줄만 제거하면
+     기존 curation.css 가 그대로 살아납니다.
+   ========================================= */
+
+/* ── 페이지 기본 재정의 ── */
+.curation-page {
+  background: #f5f4f0;
+  color: #1d1d1f;
+}
+
+/* ── 공통 레이아웃 ── */
+.cur-inner {
+  width: min(1160px, calc(100% - 80px));
+  margin: 0 auto;
+}
+.cur-narrow {
+  width: min(860px, calc(100% - 80px));
+}
+
+/* ── 공통 섹션 헤드 ── */
+.cur-section-head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.cur-section-head--left {
+  text-align: left;
+}
+.cur-section-head h2 {
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  color: #1d1d1f;
+}
+.cur-section-head p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #888;
+}
+
+/* 뱃지 */
+.cur-badge {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888;
+  border: 1px solid rgba(29, 29, 31, 0.14);
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+
+/* =========================================
+   01. HERO
+   ========================================= */
+.cur-hero {
+  padding-top: calc(var(--header-h, 70px) + 80px);
+  padding-bottom: 0;
+  background: #f5f4f0;
+  position: relative;
+}
+
+.cur-hero .cur-inner {
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.cur-kicker {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.cur-title {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.cur-desc {
+  font-size: 17px;
+  line-height: 1.85;
+  color: #888;
+  font-weight: 300;
+}
+
+/* 가오픈 공지 바 */
+.cur-notice-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  background: #1d1d1f;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.cur-notice-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7aff9a;
+  flex-shrink: 0;
+  animation: cur-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cur-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.7);
+  }
+}
+
+/* =========================================
+   02. AI SEARCH (잠금 상태)
+   ========================================= */
+.cur-search-section {
+  padding: 100px 0 80px;
+  border-top: 1px solid rgba(29, 29, 31, 0.07);
+  background: #fff;
+}
+
+.cur-search-wrap {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+/* 검색창 — blur 처리 */
+.cur-search-box {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 6px 0 22px;
+  border: 1px solid rgba(29, 29, 31, 0.14);
+  border-radius: 12px;
+  background: #f9f8f4;
+  filter: blur(1.5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.cur-search-icon {
+  flex-shrink: 0;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.cur-search-box input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 17px;
+  color: #555;
+  font-family: inherit;
+}
+
+.cur-search-btn {
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 8px;
+  background: #1d1d1f;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: none;
+  cursor: not-allowed;
+  opacity: 0.35;
+  font-family: inherit;
+}
+
+/* 잠금 오버레이 */
+.cur-lock-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.cur-lock-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 28px 36px 24px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.cur-lock-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(29, 29, 31, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.cur-lock-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.cur-lock-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #888;
+  margin: 0;
+}
+
+.cur-lock-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 20px;
+  margin-top: 8px;
+  border-radius: 100px;
+  background: #1d1d1f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.cur-lock-btn:hover {
+  opacity: 0.72;
+  color: #fff;
+}
+
+/* 예시 칩 */
+.cur-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.cur-chips span {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(29, 29, 31, 0.16);
+  font-size: 12px;
+  color: #555;
+  background: #fff;
+}
+
+/* =========================================
+   03. HOW IT WORKS
+   ========================================= */
+.cur-how {
+  padding: 100px 0;
+  border-top: 1px solid rgba(29, 29, 31, 0.07);
+  background: #f5f4f0;
+}
+
+.cur-steps {
+  display: flex;
+  align-items: flex-start;
+}
+
+.cur-step {
+  flex: 1;
+  padding: 0 40px;
+  text-align: center;
+}
+.cur-step:first-child {
+  padding-left: 0;
+}
+.cur-step:last-child {
+  padding-right: 0;
+}
+
+.cur-step-num {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.cur-step h3 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+  margin-bottom: 10px;
+}
+
+.cur-step p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #888;
+}
+
+.cur-step-divider {
+  width: 1px;
+  height: 72px;
+  background: rgba(29, 29, 31, 0.1);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* =========================================
+   04. PREVIEW COLLECTION
+   ========================================= */
+.cur-preview {
+  padding: 100px 0;
+  border-top: 1px solid rgba(29, 29, 31, 0.07);
+  background: #fff;
+}
+
+.cur-preview-board {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* 분석 결과 카드 */
+.cur-analysis {
+  background: #f5f4f0;
+  border: 1px solid rgba(29, 29, 31, 0.08);
+  border-radius: 20px;
+  padding: 28px 30px;
+}
+
+.cur-card-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.cur-analysis-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.cur-analysis-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 13px 0;
+  border-top: 1px solid rgba(29, 29, 31, 0.07);
+  gap: 12px;
+}
+.cur-analysis-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.cur-analysis-row span {
+  font-size: 12px;
+  color: #999;
+  flex-shrink: 0;
+  min-width: 76px;
+}
+
+.cur-analysis-row strong {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1d1d1f;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* 추천 카드 */
+.cur-recommend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.cur-rec-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.07);
+  background: #fff;
+}
+
+.cur-rec-thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.cur-rec-thumb--1 {
+  background: #181510;
+}
+.cur-rec-thumb--2 {
+  background: #0d1118;
+}
+
+.cur-rec-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cur-rec-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(6px);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.cur-rec-body {
+  padding: 14px 16px 16px;
+}
+
+.cur-rec-body h4 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+  margin-bottom: 5px;
+}
+
+.cur-rec-body p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* 태그 */
+.cur-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.cur-tags span {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 100px;
+  background: #f0ede8;
+  font-size: 11px;
+  color: #555;
+}
+
+/* =========================================
+   05. COMING SOON BANNER
+   ========================================= */
+.cur-coming {
+  padding: 120px 0 140px;
+  border-top: 1px solid rgba(29, 29, 31, 0.07);
+  background: #1d1d1f;
+  text-align: center;
+}
+
+.cur-coming-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  margin-bottom: 24px;
+}
+
+.cur-coming-title {
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.cur-coming-desc {
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 48px;
+}
+
+.cur-coming-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 36px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, border-color 0.25s;
+}
+.cur-coming-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+  .cur-preview-board {
+    grid-template-columns: 1fr;
+  }
+  .cur-recommend-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cur-inner,
+  .cur-narrow {
+    width: calc(100% - 48px);
+  }
+  .cur-hero .cur-inner {
+    padding-bottom: 60px;
+  }
+  .cur-search-section,
+  .cur-how,
+  .cur-preview,
+  .cur-coming {
+    padding: 72px 0;
+  }
+  .cur-steps {
+    flex-direction: column;
+  }
+  .cur-step {
+    padding: 28px 0;
+    text-align: left;
+    border-top: 1px solid rgba(29, 29, 31, 0.07);
+    width: 100%;
+  }
+  .cur-step:first-child {
+    border-top: none;
+  }
+  .cur-step-divider {
+    display: none;
+  }
+  .cur-recommend-grid {
+    grid-template-columns: 1fr;
+  }
+  .cur-notice-bar {
+    font-size: 11px;
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+  .cur-lock-inner {
+    padding: 22px 24px 20px;
+    margin: 0 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cur-inner,
+  .cur-narrow {
+    width: calc(100% - 32px);
+  }
+  .cur-section-head h2 {
+    font-size: 26px;
+  }
+  .cur-coming-title {
+    font-size: 34px;
+  }
+}

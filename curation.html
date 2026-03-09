@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curation - Lightchaser</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/curation.css" />
+  </head>
+  <body class="curation-page">
+    <div data-include-path="components/header.html"></div>
+
+    <main>
+      <!-- ══ HERO ══ -->
+      <section class="cur-hero">
+        <div class="cur-inner">
+          <p class="cur-kicker">LC CURATION</p>
+          <h1 class="cur-title">공간에 맞는<br />빛의 제안</h1>
+          <p class="cur-desc">
+            공간의 성격과 흐름을 읽고,<br />
+            그에 어울리는 미디어아트와 분위기를 제안합니다.
+          </p>
+        </div>
+
+        <!-- 가오픈 배너 -->
+        <div class="cur-notice-bar">
+          <span class="cur-notice-dot"></span>
+          현재 소프트 오픈 중입니다 — AI 큐레이션 기능은 정식 오픈 후 이용
+          가능합니다
+        </div>
+      </section>
+
+      <!-- ══ AI CURATION PREVIEW (잠금 상태) ══ -->
+      <section class="cur-search-section">
+        <div class="cur-inner cur-narrow">
+          <div class="cur-section-head">
+            <span class="cur-badge">AI CURATION</span>
+            <h2>키워드로 공간을 분석합니다</h2>
+            <p>
+              공간 유형, 분위기, 디스플레이 방식을 입력하면<br />어울리는
+              미디어아트와 분위기를 제안합니다.
+            </p>
+          </div>
+
+          <!-- 검색창 — 잠금 오버레이 포함 -->
+          <div class="cur-search-wrap">
+            <div class="cur-search-box">
+              <span class="cur-search-icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="5.5"
+                    stroke="#999"
+                    stroke-width="1.4"
+                  />
+                  <path
+                    d="M12.5 12.5L16 16"
+                    stroke="#999"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <input
+                type="text"
+                placeholder="예: 호텔 로비에 어울리는 차분한 미디어아트"
+                disabled
+                aria-label="공간 설명 입력"
+              />
+              <button type="button" class="cur-search-btn" disabled>
+                추천받기
+              </button>
+            </div>
+
+            <!-- 잠금 오버레이 -->
+            <div class="cur-lock-overlay">
+              <div class="cur-lock-inner">
+                <div class="cur-lock-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect
+                      x="5"
+                      y="11"
+                      width="14"
+                      height="10"
+                      rx="2"
+                      stroke="#1d1d1f"
+                      stroke-width="1.5"
+                    />
+                    <path
+                      d="M8 11V7a4 4 0 0 1 8 0v4"
+                      stroke="#1d1d1f"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <p class="cur-lock-title">준비 중입니다</p>
+                <p class="cur-lock-desc">
+                  AI 큐레이션 기능은 정식 오픈 후<br />이용하실 수 있습니다.
+                </p>
+                <a href="contact.html" class="cur-lock-btn">사전 문의하기</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 예시 키워드 -->
+          <div class="cur-chips">
+            <span>호텔 로비</span>
+            <span>미디어 파사드</span>
+            <span>브랜드 공간</span>
+            <span>몰입형 전시</span>
+            <span>리테일</span>
+            <span>공항 라운지</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ HOW IT WORKS ══ -->
+      <section class="cur-how">
+        <div class="cur-inner">
+          <div class="cur-section-head">
+            <span class="cur-badge">HOW IT WORKS</span>
+            <h2>큐레이션이 작동하는 방식</h2>
+          </div>
+
+          <div class="cur-steps">
+            <div class="cur-step">
+              <span class="cur-step-num">01</span>
+              <h3>공간 분석</h3>
+              <p>공간 유형, 규모, 디스플레이 방식, 운영 목적을 파악합니다.</p>
+            </div>
+            <div class="cur-step-divider"></div>
+            <div class="cur-step">
+              <span class="cur-step-num">02</span>
+              <h3>분위기 매칭</h3>
+              <p>공간의 흐름과 감각적 톤에 맞는 아트 컬렉션을 선별합니다.</p>
+            </div>
+            <div class="cur-step-divider"></div>
+            <div class="cur-step">
+              <span class="cur-step-num">03</span>
+              <h3>제안 제공</h3>
+              <p>큐레이션 리포트와 함께 구체적인 설치 방안을 제시합니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ PREVIEW COLLECTION ══ -->
+      <section class="cur-preview">
+        <div class="cur-inner">
+          <div class="cur-section-head cur-section-head--left">
+            <span class="cur-badge">PREVIEW</span>
+            <h2>큐레이션 미리보기</h2>
+            <p>정식 오픈 전 제안 방식의 일부를 미리 확인합니다.</p>
+          </div>
+
+          <!-- 예시 분석 카드 -->
+          <div class="cur-preview-board">
+            <!-- 좌: 분석 결과 -->
+            <div class="cur-analysis">
+              <p class="cur-card-label">분석 결과 예시</p>
+              <div class="cur-analysis-rows">
+                <div class="cur-analysis-row">
+                  <span>공간 유형</span>
+                  <strong>호텔 로비</strong>
+                </div>
+                <div class="cur-analysis-row">
+                  <span>디스플레이</span>
+                  <strong>미디어월</strong>
+                </div>
+                <div class="cur-analysis-row">
+                  <span>운영 목적</span>
+                  <strong>웰컴 경험 / 체류 분위기 형성</strong>
+                </div>
+                <div class="cur-analysis-row">
+                  <span>분위기</span>
+                  <strong>차분함 · 고급스러움 · 몰입감</strong>
+                </div>
+                <div class="cur-analysis-row">
+                  <span>큐레이션 방향</span>
+                  <strong>느린 빛 흐름 / 저명암 대비</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- 우: 추천 예시 -->
+            <div class="cur-recommend">
+              <p class="cur-card-label">추천 분위기 예시</p>
+              <div class="cur-recommend-grid">
+                <article class="cur-rec-card">
+                  <div class="cur-rec-thumb cur-rec-thumb--1">
+                    <img
+                      src="assets/images/project/tunnel/output/03.png"
+                      alt="라이트 베일"
+                      onerror="this.style.display='none'"
+                    />
+                    <span class="cur-rec-tag">Lobby · Media Wall</span>
+                  </div>
+                  <div class="cur-rec-body">
+                    <h4>라이트 베일</h4>
+                    <p>
+                      은은한 흐름의 빛으로 공간을 부드럽고 고급스럽게
+                      정리합니다.
+                    </p>
+                    <div class="cur-tags">
+                      <span>로비</span><span>차분함</span
+                      ><span>고급스러움</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cur-rec-card">
+                  <div class="cur-rec-thumb cur-rec-thumb--2">
+                    <img
+                      src="assets/images/project/tunnel/output/04.png"
+                      alt="사일런트 플로우"
+                      onerror="this.style.display='none'"
+                    />
+                    <span class="cur-rec-tag">Facade · LED Wall</span>
+                  </div>
+                  <div class="cur-rec-body">
+                    <h4>사일런트 플로우</h4>
+                    <p>
+                      절제된 움직임으로 공간에 조용한 몰입감과 세련된 긴장을
+                      더합니다.
+                    </p>
+                    <div class="cur-tags">
+                      <span>파사드</span><span>몰입감</span><span>세련됨</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ COMING SOON BANNER ══ -->
+      <section class="cur-coming">
+        <div class="cur-inner cur-narrow">
+          <p class="cur-coming-eyebrow">OPENING SOON</p>
+          <h2 class="cur-coming-title">AI 큐레이션<br />정식 오픈 준비 중</h2>
+          <p class="cur-coming-desc">
+            공간에 맞는 미디어아트를 자동으로 분석하고 제안하는<br />
+            LC 큐레이션 시스템이 곧 공개됩니다.
+          </p>
+          <a href="contact.html" class="cur-coming-btn">사전 문의하기</a>
+        </div>
+      </section>
+    </main>
+
+    <div data-include-path="components/footer.html"></div>
+
+    <script src="js/include.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

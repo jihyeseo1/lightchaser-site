@@ -1,0 +1,995 @@
+/* css/project-detail.css (전체 교체본 / Unified Media Tag System) */
+
+/* ========================= Tokens ========================= */
+:root {
+  --pd-max-w: 1200px;
+  --pd-gutter: clamp(18px, 3.2vw, 40px);
+  --pd-text: #111;
+  --pd-subtext: rgba(0, 0, 0, 0.62);
+  --pd-line: rgba(0, 0, 0, 0.08);
+  --pd-soft: rgba(0, 0, 0, 0.04);
+  --pd-radius-lg: 22px;
+  --pd-radius-md: 16px;
+  --header-h: 72px;
+
+  /* Unified media grid columns */
+  --mg-cols: 10; /* 데스크탑: 7:3 구현 */
+  --mg-gap: 18px;
+}
+
+/* ========================= Base ========================= */
+.project-detail *,
+.project-detail *::before,
+.project-detail *::after {
+  box-sizing: border-box;
+}
+body.project-detail {
+  /* background: #fff; */
+  color: var(--pd-text);
+}
+.project-detail img,
+.project-detail video {
+  max-width: 100%;
+  display: block;
+}
+.project-detail .inner {
+  /* width: min(1180px, calc(100% - 48px)); */
+  margin: 0 auto;
+}
+body.project-detail main.project-detail {
+  padding-top: 0 !important; /* common.css main padding-top 60px 제거 */
+}
+/* ========================= HERO ========================= */
+.project-detail .detail-hero {
+  position: relative;
+  height: 100vh; /* fallback */
+  height: 100svh; /* 최신 브라우저 안정 */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  isolation: isolate;
+}
+.project-detail .hero-video {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  filter: contrast(1.02);
+}
+.project-detail .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.124) 45%,
+    rgb(0, 0, 0)
+  );
+}
+.detail-hero .hero-txt {
+  color: rgba(255, 255, 255, 0.92);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 72px;
+  text-align: center;
+  max-width: var(--pd-max-w);
+  margin: 0 auto;
+  padding: 0 var(--pd-gutter);
+}
+.project-detail .hero-kicker {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.project-detail .hero-title {
+  margin: 14px 0 10px;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* ========================= INFO ========================= */
+.project-detail .detail-info {
+  background: #0b0c10;
+  padding: 18px 0 16px;
+}
+.project-detail .detail-info .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 22px;
+  align-items: center;
+}
+.project-detail .info-item {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.project-detail .info-item span {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  opacity: 1;
+}
+.project-detail .info-item p {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+}
+.detail-info::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ========================= FLOW (sidebar + content) ========================= */
+.project-detail .flow-container {
+  width: min(var(--pd-max-w), calc(100% - (var(--pd-gutter) * 2)));
+  margin: 0 auto;
+  padding: 90px 0;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 46px;
+}
+
+.project-detail .flow-container.technical {
+  position: relative;
+  isolation: isolate;
+}
+.project-detail .flow-container.technical::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 -44px 70px rgba(0, 0, 0, 0.55);
+  z-index: 0;
+  pointer-events: none;
+}
+.project-detail .flow-container.technical > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-detail .flow-container.creative {
+  position: relative;
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+.project-detail .flow-container.creative::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  background: #fafafa;
+  border-top: 1px solid var(--pd-line);
+  border-bottom: 1px solid var(--pd-line);
+  z-index: -1;
+}
+
+.project-detail .flow-sidebar .sticky-label-wrapper {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 120px);
+  padding: 18px 0;
+}
+.project-detail .phase-title {
+  margin: 12px 0 0;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.project-detail .flow-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================= Phase Nav ========================= */
+.project-detail .phase-nav {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.project-detail .phase-nav-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-decoration: none;
+  color: #111;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+.project-detail .phase-nav-item:hover {
+  opacity: 1;
+}
+.project-detail .phase-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #f1f1f1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+.project-detail .phase-nav-txt {
+  font-size: 13px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  padding-top: 6px;
+}
+.project-detail .phase-nav-item.is-active {
+  opacity: 1;
+}
+.project-detail .phase-nav-item.is-active .phase-dot {
+  background: #111;
+  color: #fff;
+}
+
+/* ========================= WORK OVERVIEW (CREATIVE) ========================= */
+.project-detail .work-overview {
+  padding: 10px 0 44px;
+  border-bottom: 1px solid var(--pd-line);
+  max-width: 920px;
+}
+.project-detail .overview-kicker {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pd-subtext);
+}
+.project-detail .overview-title {
+  margin: 0 0 16px;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+.project-detail .overview-body p {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(0, 0, 0, 0.72);
+}
+.project-detail .overview-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================= STEP CARD ========================= */
+.project-detail .step-card {
+  padding: 72px 0;
+  margin: 0;
+  border-bottom: 1px solid var(--pd-line);
+}
+.project-detail .step-header {
+  max-width: 860px;
+  margin: 0 0 28px 0;
+}
+.project-detail .step-headline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.project-detail .step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.04);
+  color: #111;
+  flex: 0 0 auto;
+}
+.project-detail .step-header h4 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.project-detail .step-desc {
+  margin: 0 0 16px 54px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.58);
+}
+.project-detail .tech-box {
+  margin: 0 0 0 54px;
+  padding: 12px 0 0 14px;
+  border-left: 2px solid rgba(0, 0, 0, 0.12);
+}
+.project-detail .tech-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+/* ============================================================
+   UNIFIED MEDIA GRID SYSTEM (핵심)
+   - 고정비율/고정높이 삭제
+   - 이미지/비디오 모두 "원본 비율 그대로" (잘림 없음)
+   - 컨테이너가 비율을 강요하지 않아 레터박스 박스 자체가 안 생김
+   - 태그로만 사이즈 제어: size-full / size-main / size-sub / size-half
+   ============================================================ */
+.project-detail .step-media-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--mg-cols), minmax(0, 1fr));
+  gap: var(--mg-gap);
+  margin-top: 18px;
+  grid-auto-flow: row dense; /* 자유 배치(덜 규격화) */
+}
+
+.project-detail figure.media {
+  position: relative;
+  background: #0b0c10; /* 아주 어두운 배경 (흰 페이지에서 자연스러움) */
+  /* aspect-ratio: 16 / 10;  */
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+
+  transition: box-shadow 0.3s ease;
+}
+.project-detail figure.media:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+/* 이미지/영상 공통: 비율 유지, 잘리지 않음 */
+.project-detail figure.media > img,
+.project-detail figure.media > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* contain/cover 강제 금지 */
+}
+
+/* Size tags (데스크탑: 10컬럼 기준) */
+.project-detail .size-full {
+  grid-column: 1 / -1;
+}
+.project-detail .size-main {
+  grid-column: span 7; /* 7 */
+}
+.project-detail .size-sub {
+  grid-column: span 3; /* 3 */
+}
+.project-detail .size-half {
+  grid-column: span 5; /* main2 = 반반 */
+}
+
+/* 캡션 태그 */
+.project-detail figure.media .media-tag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 3;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  white-space: nowrap;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.project-detail figure.media .media-tag.is-wide {
+  white-space: normal;
+  line-height: 1.35;
+  border-radius: 12px;
+  max-width: min(86%, 560px);
+}
+/* =========================
+   Portrait media override
+   (세로 영상 예외 처리)
+   ========================= */
+.project-detail figure.media.is-portrait {
+  aspect-ratio: auto; /* 고정 비율 제거 */
+  height: auto; /* 내용 기준 높이 */
+  background: #000; /* 레터박스 대비 */
+}
+
+.project-detail figure.media.is-portrait > video {
+  width: 100%;
+  height: auto; /* 원본 비율 유지 */
+  object-fit: contain; /* 절대 잘리지 않음 */
+}
+/* ========================= Motion PT hero grid ========================= */
+.project-detail .ms-pt-hero.is-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+}
+
+/* details button */
+/* More sources 버튼이 위 대표 영상과 너무 붙는 문제 */
+.project-detail details.ms-more {
+  margin-top: 16px;
+}
+
+/* 펼쳤을 때 썸네일 그리드가 버튼과 붙지 않게 */
+.project-detail .ms-more-body {
+  margin-top: 14px;
+}
+.project-detail details.ms-more > summary.ms-more-btn {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #111;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+.project-detail details.ms-more > summary.ms-more-btn::-webkit-details-marker {
+  display: none;
+}
+.project-detail details.ms-more > summary.ms-more-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+}
+.project-detail details.ms-more > summary.ms-more-btn:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.45);
+  outline-offset: 3px;
+}
+.project-detail .ms-more-ico {
+  display: inline-block;
+  width: 18px;
+  text-align: center;
+  opacity: 0.95;
+  transform-origin: 50% 50%;
+  transition: transform 180ms ease;
+}
+.project-detail .ms-more[open] .ms-more-ico {
+  transform: rotate(45deg);
+}
+
+/* ========================= Motion list ========================= */
+.project-detail .ms-pt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  max-width: 920px;
+}
+/* PT 리스트의 첫 번째 항목은 위 소개글과 같은 그룹이므로 구분선 제거 */
+.project-detail .ms-pt-list > .ms-pt:first-child {
+  border-top: 0;
+  padding-top: 0; /* 선 없앴으면 위 패딩도 줄여서 더 자연스럽게 */
+}
+.project-detail .ms-pt {
+  padding: 22px 0 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.project-detail .ms-pt-head {
+  margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "k t" "d d";
+  column-gap: 14px;
+  row-gap: 8px;
+  align-items: center;
+}
+.project-detail .ms-pt-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #efefef;
+  color: #111 !important;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  grid-area: k;
+}
+.project-detail .ms-pt-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+  grid-area: t;
+}
+.project-detail .ms-pt-line {
+  grid-area: d;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.62);
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: 58px;
+}
+
+/* ========================= FINAL INSTALLATION ========================= */
+.project-detail .flow-group {
+  padding: 160px 0 130px;
+}
+.project-detail .flow-group .inner {
+  text-align: center;
+}
+.project-detail .section-title {
+  font-size: clamp(28px, 3.2vw, 48px);
+  margin: 0 0 60px;
+  letter-spacing: -0.03em;
+}
+.project-detail .video-bleed {
+  width: min(1400px, calc(100% - 64px));
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.55);
+}
+.video-bleed .yt-lite {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: center / cover no-repeat;
+}
+.video-bleed .yt-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 74px;
+  height: 74px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+}
+.video-bleed .yt-play::before {
+  content: "";
+  position: absolute;
+  left: 52%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid rgba(255, 255, 255, 0.92);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+.project-detail .video-bleed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ========================= OUTPUT / ARCHIVE ========================= */
+.project-detail .output-group {
+  background: #0b0c10;
+  padding: 36px 0 72px;
+}
+.project-detail .output-group .flow-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 6px 0 14px;
+}
+.project-detail .output-group .flow-title span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  opacity: 0.55;
+  color: #fff;
+}
+.project-detail .output-group .flow-title h3 {
+  margin: 0;
+  font-size: clamp(18px, 1.9vw, 26px);
+  line-height: 1.15;
+  font-weight: 700;
+  color: #fff;
+}
+.project-detail .output-gallery {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr)); /* 핵심: 6컬럼 */
+  gap: 18px;
+  grid-auto-flow: row dense;
+}
+/* 기본 3개/줄 = 2칸씩 먹으면 됨 (6/2=3) */
+.project-detail .out.out-third {
+  grid-column: span 2;
+}
+
+/* 반반 2개/줄 = 3칸씩 (6/3=2) */
+.project-detail .out.out-half {
+  grid-column: span 3;
+}
+
+/* 한 줄 꽉 (원하면) */
+.project-detail .out.out-full {
+  grid-column: 1 / -1;
+}
+/* 카드 공통 */
+.project-detail .out {
+  /* margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.55); */
+
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+.project-detail .out img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ========================= CREDITS ========================= */
+.project-detail .detail-credits {
+  padding: 90px 0;
+  border-top: 1px solid var(--pd-line);
+  background: #fff;
+}
+.project-detail .credit-wrap {
+  border: 1px solid var(--pd-line);
+  border-radius: var(--pd-radius-lg);
+  overflow: hidden;
+  background: #fff;
+}
+.project-detail .c-line {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 18px;
+  padding: 18px 20px;
+  border-top: 1px solid var(--pd-line);
+}
+.project-detail .c-line:first-child {
+  border-top: 0;
+}
+.project-detail .c-line span {
+  color: var(--pd-subtext);
+  font-weight: 600;
+}
+.project-detail .c-line p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* ========================= NEXT PROJECT ========================= */
+.project-detail .next-project {
+  padding: 90px 0 110px;
+  border-top: 1px solid var(--pd-line);
+}
+.project-detail .next-link {
+  width: min(var(--pd-max-w), calc(100% - (var(--pd-gutter) * 2)));
+  margin: 0 auto;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--pd-radius-lg);
+  border: 1px solid var(--pd-line);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 28px 26px;
+  transition: transform 180ms ease, background 180ms ease;
+}
+.project-detail .next-link:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.035);
+}
+.project-detail .next-link span {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pd-subtext);
+  margin-bottom: 10px;
+}
+.project-detail .next-link h3 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+/* ========================= OUTPUT VIDEO GRID ========================= */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 18px;
+}
+.video-item.is-wide {
+  grid-column: 1 / -1;
+}
+.video-item .video-caption {
+  opacity: 0.7;
+  margin: 0 0 10px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+.video-card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0b0b0b;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+.video-card::before {
+  content: "";
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+.video-card > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.55)
+  );
+  border: 0;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+.video-card:hover .video-overlay {
+  opacity: 0.92;
+}
+.video-play {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.video-play::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-33%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid rgba(255, 255, 255, 0.9);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+@media (min-width: 980px) {
+  .video-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+  }
+}
+
+/* ========================= Responsive (절대 1열로 안 떨어지게) ========================= */
+@media (max-width: 980px) {
+  .project-detail .detail-info .inner {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .project-detail .flow-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 70px 0;
+  }
+  .project-detail .flow-container.creative {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .project-detail .flow-sidebar .sticky-label-wrapper {
+    position: static;
+    max-height: none;
+  }
+
+  /* Media grid: 6 columns (여전히 다열) */
+  :root {
+    --mg-cols: 6;
+    --mg-gap: 12px;
+  }
+
+  /* size remap (6col 기준) */
+  .project-detail .size-full {
+    grid-column: 1 / -1;
+  }
+  .project-detail .size-main {
+    grid-column: span 4;
+  }
+  .project-detail .size-sub {
+    grid-column: span 2;
+  }
+  .project-detail .size-half {
+    grid-column: span 3;
+  }
+
+  /* PT hero는 모바일에서도 2열 유지 (요구사항) */
+  .project-detail .ms-pt-hero.is-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-detail .c-line {
+    grid-template-columns: 1fr;
+  }
+  .project-detail .output-gallery {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .project-detail .out.out-third {
+    grid-column: span 3; /* 2개/줄로 완화 */
+  }
+  .project-detail .out.out-half {
+    grid-column: span 6; /* 반반은 모바일에서 1개/줄 권장 */
+  }
+}
+
+@media (max-width: 680px) {
+  .project-detail .step-card {
+    padding: 54px 0;
+  }
+  .project-detail .step-header h4 {
+    font-size: 22px;
+  }
+  .project-detail .step-desc {
+    margin-left: 0;
+  }
+  .project-detail .tech-box {
+    margin-left: 0;
+  }
+
+  /* Media grid: 4 columns (여전히 다열) */
+  :root {
+    --mg-cols: 4;
+    --mg-gap: 10px;
+  }
+
+  /* size remap (4col 기준) */
+  .project-detail .size-full {
+    grid-column: 1 / -1;
+  }
+  .project-detail .size-main {
+    grid-column: span 3;
+  }
+  .project-detail .size-sub {
+    grid-column: span 2; /* 2개/row 형태로 자연스럽게 */
+  }
+  .project-detail .size-half {
+    grid-column: span 2; /* 반반 유지 */
+  }
+
+  .project-detail figure.media .media-tag {
+    font-size: 11px;
+    max-width: 78%;
+  }
+
+  /* PT hero도 2열 유지 */
+  .project-detail .ms-pt-hero.is-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .project-detail .output-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 아주 작은 화면은 2열 */
+  }
+  .project-detail .out.out-third,
+  .project-detail .out.out-half,
+  .project-detail .out.out-full {
+    grid-column: auto; /* 2열 그리드에 자연스럽게 */
+  }
+}
+/* ===== SLOGAN (between info and output) ===== */
+/* ===== SLOGAN (dark bridge between info and output) ===== */
+.project-detail .detail-slogan {
+  background: #0b0c10; /* output와 동일 */
+  padding: 22px 0 26px;
+  position: relative;
+  padding-bottom: 55px; /* 기존보다 +40~60px 느낌 */
+}
+
+.project-detail .detail-slogan::before {
+  top: 0;
+}
+.project-detail .detail-slogan::after {
+  bottom: 0;
+}
+
+.project-detail .detail-slogan .slogan-kicker {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.593);
+  text-transform: uppercase;
+}
+
+.project-detail .detail-slogan .slogan-lead {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 550;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .project-detail .detail-slogan {
+    padding: 18px 0 20px;
+    padding-bottom: 50px;
+  }
+  .project-detail .detail-slogan .slogan-lead {
+    font-size: 14.5px;
+    padding: 0 10px;
+  }
+}
+.project-detail .tech-box {
+  margin: 32px 0;
+  padding: 12px 0 0 14px;
+  border-left: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.project-detail .step-media-grid + .tech-box {
+  margin-top: 44px;
+}
+@supports not (height: 100svh) {
+  .project-detail .detail-hero {
+    height: calc(100vh - var(--header-h));
+    min-height: calc(100vh - var(--header-h));
+  }
+}
