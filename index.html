@@ -1968,6 +1968,205 @@
         }
       }
 
+
+      /* ================= SOLUTION RECOMMEND TAG FINAL ================= */
+
+      .solution-item {
+        min-height: 560px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+      }
+
+      .solution-label {
+        display: none !important;
+      }
+
+      .solution-top {
+        padding: clamp(32px, 2.6vw, 44px) clamp(28px, 2.4vw, 38px)
+          clamp(24px, 2vw, 32px) !important;
+      }
+
+      .solution-item h3 {
+        margin: 0 !important;
+        font-size: clamp(26px, 1.9vw, 34px) !important;
+        line-height: 1.12 !important;
+        font-weight: 760 !important;
+        letter-spacing: -0.02em !important;
+        word-break: keep-all !important;
+      }
+
+      .solution-item h3 span {
+        display: block !important;
+        margin-top: 10px !important;
+        font-size: clamp(14px, 0.92vw, 16px) !important;
+        line-height: 1.35 !important;
+        font-weight: 600 !important;
+        color: rgba(35, 31, 32, 0.45) !important;
+      }
+
+      .solution-item p {
+        margin-top: 30px !important;
+        max-width: 390px !important;
+        font-size: clamp(15px, 0.95vw, 17px) !important;
+        line-height: 1.72 !important;
+        font-weight: 520 !important;
+        color: rgba(35, 31, 32, 0.72) !important;
+      }
+
+      .solution-visual {
+        height: 220px !important;
+        margin-top: auto !important;
+      }
+
+      .solution-recommend {
+        padding: 24px clamp(28px, 2.4vw, 38px) 30px !important;
+        border-top: 1px solid rgba(35, 31, 32, 0.08);
+        background: rgba(255, 255, 255, 0.38);
+      }
+
+      .solution-recommend p {
+        margin: 0 0 14px !important;
+        font-size: 12px !important;
+        line-height: 1 !important;
+        font-weight: 760 !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        color: rgba(35, 31, 32, 0.42) !important;
+      }
+
+      .solution-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .solution-tags span {
+        display: inline-flex;
+        align-items: center;
+        height: 32px;
+        padding: 0 13px;
+        border: 1px solid rgba(35, 31, 32, 0.13);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
+        font-size: 12.5px;
+        line-height: 1;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: rgba(35, 31, 32, 0.62);
+      }
+
+      @media (max-width: 1180px) {
+        .solution-item {
+          min-height: auto !important;
+          display: grid !important;
+          grid-template-columns: 1fr 0.9fr !important;
+          grid-template-areas:
+            "top visual"
+            "recommend visual" !important;
+        }
+
+        .solution-top {
+          grid-area: top;
+          padding: 34px 32px 24px !important;
+        }
+
+        .solution-visual {
+          grid-area: visual;
+          height: 100% !important;
+          min-height: 320px !important;
+        }
+
+        .solution-recommend {
+          grid-area: recommend;
+          padding: 0 32px 32px !important;
+          border-top: none;
+          background: transparent;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .solution-item {
+          display: flex !important;
+        }
+
+        .solution-top {
+          padding: 32px 24px 24px !important;
+        }
+
+        .solution-visual {
+          height: 210px !important;
+          min-height: 210px !important;
+        }
+
+        .solution-recommend {
+          padding: 22px 24px 28px !important;
+          border-top: 1px solid rgba(35, 31, 32, 0.08);
+          background: rgba(255, 255, 255, 0.38);
+        }
+
+        .solution-tags span {
+          height: 30px;
+          font-size: 12px;
+        }
+      }
+
+
+      /* ================= SOLUTION TAG-ONLY FINAL OVERRIDE ================= */
+
+      .solution-recommend {
+        padding: 20px clamp(28px, 2.4vw, 38px) 28px !important;
+        border-top: 1px solid rgba(35, 31, 32, 0.08);
+        background: rgba(255, 255, 255, 0.38);
+      }
+
+      .solution-recommend > p {
+        display: none !important;
+      }
+
+      .solution-tags {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .solution-tags span {
+        display: inline-flex;
+        align-items: center;
+        height: 32px;
+        padding: 0 13px;
+        border: 1px solid rgba(35, 31, 32, 0.13);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
+        font-size: 12.5px;
+        line-height: 1;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: rgba(35, 31, 32, 0.62);
+      }
+
+      @media (max-width: 1180px) {
+        .solution-recommend {
+          grid-area: recommend;
+          padding: 0 32px 32px !important;
+          border-top: none;
+          background: transparent;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .solution-recommend {
+          padding: 20px 24px 28px !important;
+          border-top: 1px solid rgba(35, 31, 32, 0.08);
+          background: rgba(255, 255, 255, 0.38);
+        }
+
+        .solution-tags span {
+          height: 30px;
+          font-size: 12px;
+        }
+      }
+
       /* ================= TRANSFORM TWO-IMAGE COMPARE HOVER FIX ================= */
       .compare {
         --split: 50%;
@@ -2091,11 +2290,11 @@
       <div class="solution-list">
         <article class="solution-item">
           <div class="solution-top">
-            <div class="solution-label">ARCHITECTURE</div>
             <h3>
               Media Facade
               <span>미디어 파사드</span>
             </h3>
+
             <p>
               건축물의 형태와 장소의 맥락을 읽고, 그에 맞는 빛과 콘텐츠의 흐름을
               설계합니다.
@@ -2106,15 +2305,23 @@
             <span class="solution-visual-mark"></span>
             <img src="img/a1.png" alt="미디어 파사드 예시 이미지" />
           </div>
+
+          <div class="solution-recommend">
+            <div class="solution-tags">
+              <span>지역 명소</span>
+              <span>상업 시설</span>
+              <span>역사 기념 장소</span>
+            </div>
+          </div>
         </article>
 
         <article class="solution-item">
           <div class="solution-top">
-            <div class="solution-label">SPACE</div>
             <h3>
               Lighting Installation
               <span>라이팅 인스톨레이션</span>
             </h3>
+
             <p>
               공간의 분위기와 체류 경험을 강화하는 장소 맞춤형 라이팅 연출을
               제안합니다.
@@ -2125,15 +2332,23 @@
             <span class="solution-visual-mark"></span>
             <img src="img/a2.png" alt="라이팅 인스톨레이션 예시 이미지" />
           </div>
+
+          <div class="solution-recommend">
+            <div class="solution-tags">
+              <span>전시 공간</span>
+              <span>프리미엄 카페</span>
+              <span>호텔 / 리조트</span>
+            </div>
+          </div>
         </article>
 
         <article class="solution-item">
           <div class="solution-top">
-            <div class="solution-label">PERFORMANCE</div>
             <h3>
               Performance Media Art
               <span>공연 미디어아트</span>
             </h3>
+
             <p>
               공연의 흐름에 맞는 미디어 콘텐츠와 비주얼 연출로 무대의 몰입감을
               높입니다.
@@ -2143,6 +2358,14 @@
           <div class="solution-visual">
             <span class="solution-visual-mark"></span>
             <img src="img/a3.jpg" alt="공연 미디어아트 예시 이미지" />
+          </div>
+
+          <div class="solution-recommend">
+            <div class="solution-tags">
+              <span>공연 / 페스티벌</span>
+              <span>기념 행사</span>
+              <span>브랜드 쇼케이스</span>
+            </div>
           </div>
         </article>
       </div>
@@ -2181,7 +2404,7 @@
                 <h3 class="project-name">
                   2026 서울라이트 한강 빛섬축제 〈빛의 터널〉
                 </h3>
-                <p class="project-client">서울특별시</p>
+                <p class="project-client">client: 서울특별시</p>
               </div>
 
               <div class="project-play">▶</div>
@@ -2214,7 +2437,7 @@
                 <h3 class="project-name">
                   아틀리에 광화 〈그르릉, 우르릉, 와르릉〉
                 </h3>
-                <p class="project-client">Customxstudio</p>
+                <p class="project-client">client: Customxstudio & 신세계백화점</p>
               </div>
 
               <div class="project-play">▶</div>
@@ -2245,7 +2468,7 @@
 
               <div class="project-content">
                 <h3 class="project-name">푸조 신차 발표회</h3>
-                <p class="project-client">푸조</p>
+                <p class="project-client">client: 푸조</p>
               </div>
 
               <div class="project-play">▶</div>
@@ -2276,7 +2499,7 @@
 
               <div class="project-content">
                 <h3 class="project-name">Lines of Tangible Extension</h3>
-                <p class="project-client">섹션</p>
+                <p class="project-client">client: 섹션</p>
               </div>
 
               <div class="project-play">▶</div>
@@ -2307,7 +2530,7 @@
 
               <div class="project-content">
                 <h3 class="project-name">D.C.S.C</h3>
-                <p class="project-client">전주 팔복예술공장</p>
+                <p class="project-client">client: 전주 팔복예술공장</p>
               </div>
 
               <div class="project-play">▶</div>
@@ -2457,20 +2680,20 @@
           </div>
         </div>
 
-        <form class="form">
-          <input type="text" placeholder="이름 / 기업명" />
-          <input type="text" placeholder="연락처" />
-          <input type="email" placeholder="이메일" />
+        <form class="form" id="contactForm">
+          <input type="text" name="name" placeholder="이름 / 기업명" required />
+          <input type="text" name="phone" placeholder="연락처" required />
+          <input type="email" name="email" placeholder="이메일" required />
 
-          <select>
-            <option>프로젝트 유형 선택해주세요</option>
+          <select name="projectType" required>
+            <option value="">프로젝트 유형 선택해주세요</option>
             <option>미디어 파사드</option>
             <option>라이팅 인스톨레이션</option>
             <option>공연 미디어아트 연출</option>
           </select>
 
-          <select class="full">
-            <option>예산 범위 선택해주세요</option>
+          <select class="full" name="budget">
+            <option value="">예산 범위 선택해주세요</option>
             <option>1,000만원 이하</option>
             <option>1,000만원 ~ 3,000만원</option>
             <option>3,000만원 ~ 7,000만원</option>
@@ -2478,6 +2701,7 @@
           </select>
 
           <textarea
+            name="message"
             placeholder="프로젝트 내용에 대해 작성해주세요. 자세하게 작성해주시면, 정확한 견적에 가까워집니다."
           ></textarea>
 
@@ -2656,5 +2880,44 @@
         });
       });
     </script>
+  
+    <script>
+      const contactForm = document.getElementById("contactForm");
+      const contactScriptURL = "https://script.google.com/macros/s/AKfycbyzNxQGjUf2Hvl3-L0D9HH74KMD7EIHzeR8dac3Lw7HMt0ET0MdG_BRIzU6qJIuBe5p/exec";
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(contactForm);
+          const submitButton = contactForm.querySelector("button[type='submit'], button");
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "전송 중입니다...";
+          }
+
+          try {
+            await fetch(contactScriptURL, {
+              method: "POST",
+              body: formData,
+              mode: "no-cors",
+            });
+
+            alert("문의가 접수되었습니다. 빠르게 확인 후 연락드리겠습니다.");
+            contactForm.reset();
+          } catch (error) {
+            alert("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+            console.error(error);
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = "프로젝트 문의하기";
+            }
+          }
+        });
+      }
+    </script>
+
   </body>
 </html>
