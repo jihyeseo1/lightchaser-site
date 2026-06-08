@@ -2681,7 +2681,7 @@
         </div>
 
         <form class="form" id="contactForm">
-          <input type="text" name="name" placeholder="이름 / 기업명" required />
+          <input type="text" name="name" placeholder="담당자명 / 소속기관명" required />
           <input type="text" name="phone" placeholder="연락처" required />
           <input type="email" name="email" placeholder="이메일" required />
 
@@ -2699,6 +2699,17 @@
             <option>3,000만원 ~ 7,000만원</option>
             <option>7,000만원 이상</option>
           </select>
+
+          <select class="full" name="visitPath" required>
+            <option value="">방문경로를 선택해주세요</option>
+            <option value="구글검색">구글검색</option>
+            <option value="블로그">블로그</option>
+            <option value="인스타그램">인스타그램</option>
+            <option value="유튜브">유튜브</option>
+            <option value="지인추천">지인추천</option>
+            <option value="기타">기타</option>
+          </select>
+
 
           <textarea
             name="message"
