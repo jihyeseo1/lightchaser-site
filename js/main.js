@@ -232,3 +232,278 @@ document.querySelectorAll(".video-card").forEach((card) => {
 
   mo.observe(document.documentElement, { childList: true, subtree: true });
 })();
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.querySelector(".global-light-canvas");
+
+  const bottomGlow = document.querySelector(".global-bottom-glow");
+
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  let smoothX = 0;
+  let smoothY = 0;
+
+  let initialized = false;
+
+  const trail = [];
+
+  /* 잔광 지속시간 */
+  const TRAIL_LIFE = 1200;
+
+  /* =========================================
+     CANVAS SIZE
+     ========================================= */
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = window.innerWidth * dpr;
+
+    canvas.height = window.innerHeight * dpr;
+
+    canvas.style.width = `${window.innerWidth}px`;
+
+    canvas.style.height = `${window.innerHeight}px`;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  resizeCanvas();
+
+  window.addEventListener("resize", resizeCanvas);
+
+  /* =========================================
+     MOUSE
+     ========================================= */
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (!initialized) {
+      smoothX = mouseX;
+      smoothY = mouseY;
+
+      initialized = true;
+    }
+  });
+
+  /* =========================================
+     ADD TRAIL
+     ========================================= */
+
+  function addTrailPoint(now) {
+    if (!initialized) return;
+
+    /*
+      커서에 약간의 부드러운 지연
+    */
+
+    smoothX += (mouseX - smoothX) * 0.26;
+
+    smoothY += (mouseY - smoothY) * 0.26;
+
+    const last = trail[trail.length - 1];
+
+    /*
+      실제 이동했을 때만 기록
+      → 멈춘 자리에 점 생기는 것 방지
+    */
+
+    if (!last || Math.hypot(smoothX - last.x, smoothY - last.y) > 1) {
+      trail.push({
+        x: smoothX,
+        y: smoothY,
+        born: now,
+      });
+    }
+  }
+
+  /* =========================================
+     REMOVE OLD TRAIL
+     ========================================= */
+
+  function removeOldTrail(now) {
+    while (trail.length && now - trail[0].born > TRAIL_LIFE) {
+      trail.shift();
+    }
+  }
+
+  /* =========================================
+     DRAW
+     ========================================= */
+
+  function drawTrail(now) {
+    if (trail.length < 3) return;
+
+    /*
+      선 조각 사이의 틈이 안 보이도록
+      round cap 사용
+    */
+
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    for (let i = 1; i < trail.length; i++) {
+      const p1 = trail[i - 1];
+      const p2 = trail[i];
+
+      /*
+        시간 기준 fade
+      */
+
+      const age = Math.min(1, (now - p2.born) / TRAIL_LIFE);
+
+      const life = 1 - age;
+
+      /*
+        꼬리 위치
+
+        0 = 가장 오래된 끝
+        1 = 현재 마우스 근처
+      */
+
+      const position = i / (trail.length - 1);
+
+      /*
+        핵심:
+        끝으로 갈수록 매우 가늘어짐
+      */
+
+      const taper = Math.pow(position, 2.7);
+
+      /*
+        시간 fade까지 결합
+      */
+
+      const strength = Math.pow(life, 1.6) * taper;
+
+      /*
+        중심선
+
+        끝: 약 0.1px
+        머리: 약 3px
+      */
+
+      const coreWidth = 0.1 + 2.9 * strength;
+
+      /* -------------------------
+         아주 넓은 바깥 glow
+         ------------------------- */
+
+      ctx.beginPath();
+
+      ctx.moveTo(p1.x, p1.y);
+
+      ctx.lineTo(p2.x, p2.y);
+
+      ctx.lineWidth = coreWidth * 8;
+
+      ctx.strokeStyle = `rgba(
+          190,
+          230,
+          255,
+          ${0.05 * strength}
+        )`;
+
+      ctx.stroke();
+
+      /* -------------------------
+         중간 glow
+         ------------------------- */
+
+      ctx.beginPath();
+
+      ctx.moveTo(p1.x, p1.y);
+
+      ctx.lineTo(p2.x, p2.y);
+
+      ctx.lineWidth = coreWidth * 4;
+
+      ctx.strokeStyle = `rgba(
+          200,
+          238,
+          255,
+          ${0.5 * strength}
+        )`;
+
+      ctx.stroke();
+
+      /* -------------------------
+         중심선
+         ------------------------- */
+
+      ctx.beginPath();
+
+      ctx.moveTo(p1.x, p1.y);
+
+      ctx.lineTo(p2.x, p2.y);
+
+      ctx.lineWidth = coreWidth;
+
+      ctx.strokeStyle = `rgba(
+          240,
+          245,
+          255,
+          ${0.5 * strength}
+        )`;
+
+      ctx.stroke();
+    }
+  }
+
+  /* =========================================
+     ANIMATION
+     ========================================= */
+
+  function animate(now) {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    addTrailPoint(now);
+
+    /*
+      마우스를 가만히 두더라도
+      시간은 계속 지나기 때문에
+      자동으로 없어짐
+    */
+
+    removeOldTrail(now);
+
+    drawTrail(now);
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+
+  /* =========================================
+     BOTTOM SCROLL GLOW
+     ========================================= */
+
+  function updateBottomGlow() {
+    if (!bottomGlow) return;
+
+    const scrollBottom = window.scrollY + window.innerHeight;
+
+    const documentHeight = document.documentElement.scrollHeight;
+
+    /*
+      페이지 맨 아래에서
+      약 8px 이내면 빛 제거
+    */
+
+    const atBottom = scrollBottom >= documentHeight - 8;
+
+    bottomGlow.classList.toggle("is-hidden", atBottom);
+  }
+
+  window.addEventListener("scroll", updateBottomGlow, { passive: true });
+
+  window.addEventListener("resize", updateBottomGlow);
+
+  updateBottomGlow();
+});

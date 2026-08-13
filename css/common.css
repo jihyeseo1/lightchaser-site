@@ -14,7 +14,7 @@
   /* 헤더 커스터마이즈 */
   --header-h: 70px; /* 헤더 높이 */
   --header-pad-x: 40px; /* 좌우 여백 */
-  --logo-h: 56px; /* 로고 이미지 높이 */
+  --logo-h: 40px; /* 로고 이미지 높이 */
   --menu-gap: 30px; /* PC 메뉴 간격 */
 }
 
@@ -210,8 +210,8 @@ header.is-invert .gnb a {
 }
 
 .sub-visual h2 {
-  font-size: 56px;
-  font-weight: 700;
+  font-size: 50px;
+  font-weight: 500;
   letter-spacing: -1px;
   margin-bottom: 10px;
   color: var(--text-main);

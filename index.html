@@ -4,67 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lightchaser</title>
+
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/home2.css" />
+    <link rel="stylesheet" href="css/home2 copy.css" />
   </head>
+
   <body>
     <div data-include-path="components/header.html"></div>
+    <!-- 전체 사이트 마우스 빛 -->
+    <canvas class="global-light-canvas"></canvas>
 
+    <!-- 현재 화면 아래쪽 스크롤 유도 빛 -->
+    <div class="global-bottom-glow"></div>
+
+    <div data-include-path="components/header.html"></div>
     <main>
-      <!-- ── 01 HERO ── -->
+      <!-- =============================================
+           01 HERO
+           ============================================= -->
       <section class="main-visual">
-        <!-- 배경 로고 이미지 -->
-        <img
-          class="hero-bg-logo"
-          src="assets/images/common/lcsymbol.png"
-          alt=""
-          onerror="this.style.display='none'"
-        />
-
-        <!-- 우상단 연도 레이블 -->
-        <span class="hero-corner">SEOUL — 2026</span>
-
-        <!-- 하단 타이틀 + 서브 -->
-        <div class="hero-foot">
-          <h2 class="hero-title">LIGHT<br />CHASER</h2>
-          <div class="hero-sub">
-            <p>빛으로 공간을 만들다.<br /></p>
-            <a href="project.html" class="hero-link">
-              VIEW PROJECTS
-              <svg viewBox="0 0 11 11" fill="none">
-                <path
-                  d="M1 5.5h9M5.5 1l4.5 4.5-4.5 4.5"
-                  stroke="currentColor"
-                  stroke-width="1.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </a>
-          </div>
+        <!-- 중앙 심볼 내부 영상 -->
+        <div class="hero-symbol">
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="assets/videos/gwanghwa-main.mp4" type="video/mp4" />
+          </video>
         </div>
 
-        <!-- 하단 중앙 메타
-        <div class="hero-meta">
-          <span>Light</span>
-          <span>Space</span>
-          <span>Technology</span>
-        </div> -->
+        <!-- 좌측 하단 소개 -->
+        <div class="hero-copy">
+          <h1>빛을 쫓는 사람들</h1>
 
-        <!-- 스크롤 힌트 -->
-        <div class="scroll-guide">
-          <div class="scroll-line"></div>
-          <span>SCROLL</span>
+          <p>
+            라이트체이서는 공간에 숨겨진 이야기를<br />
+            빛, 소리, 영상, 조명으로 재해석하는 공간 스토리텔링 미디어아트
+            그룹입니다
+          </p>
         </div>
       </section>
 
-      <!-- ── 02 STICKY SCENES ── -->
+      <!-- =============================================
+           02 STICKY SCENES
+           ============================================= -->
       <section class="sticky-container">
         <div class="sticky-frame">
           <div class="scene scene-1 active">
             <div class="content-text">
               <p class="scene-eyebrow">OUR WORK</p>
-              <h3>Chasing Light,<br /><strong>Shaping Space.</strong></h3>
+
+              <h3>
+                media facade <br />
+                / lightting installration
+                <br />/ performance<br />
+                <!-- <strong>Shaping Space.</strong> -->
+              </h3>
             </div>
           </div>
 
@@ -73,11 +65,15 @@
               class="bg-img"
               style="background-image: url('assets/images/home/media.jpg')"
             ></div>
+
             <span class="scene-num">01</span>
+
             <div class="content-box">
               <h3>Media Facade</h3>
+
               <a href="project.html" class="btn-view">
                 View
+
                 <svg viewBox="0 0 9 9" fill="none">
                   <path
                     d="M1 4.5h7M4.5 1l3.5 3.5-3.5 3.5"
@@ -96,11 +92,15 @@
               class="bg-img"
               style="background-image: url('assets/images/home/perform.jpg')"
             ></div>
+
             <span class="scene-num">02</span>
+
             <div class="content-box">
               <h3>Performance</h3>
+
               <a href="project-tunnel.html" class="btn-view">
                 View
+
                 <svg viewBox="0 0 9 9" fill="none">
                   <path
                     d="M1 4.5h7M4.5 1l3.5 3.5-3.5 3.5"
@@ -119,11 +119,15 @@
               class="bg-img"
               style="background-image: url('assets/images/home/exhibit.jpg')"
             ></div>
+
             <span class="scene-num">03</span>
+
             <div class="content-box">
               <h3>Exhibition</h3>
+
               <a href="project-shinsagae.html" class="btn-view">
                 View
+
                 <svg viewBox="0 0 9 9" fill="none">
                   <path
                     d="M1 4.5h7M4.5 1l3.5 3.5-3.5 3.5"
@@ -146,11 +150,18 @@
         </div>
       </section>
 
-      <!-- ── 03 CONTACT CTA ── -->
+      <!-- =============================================
+           03 CONTACT
+           ============================================= -->
       <section class="bottom-contact">
-        <h2>Let's create<br />something brilliant.</h2>
+        <h2>
+          Let's create<br />
+          something brilliant.
+        </h2>
+
         <a href="contact.html" class="btn-contact">
           CONTACT US
+
           <svg viewBox="0 0 12 12" fill="none">
             <path
               d="M1 6h10M6 1l5 5-5 5"
@@ -164,7 +175,9 @@
       </section>
     </main>
 
-    <!-- ── 04 INDIVIDUAL WORKS MARQUEE ── -->
+    <!-- =============================================
+         04 INDIVIDUAL WORKS
+         ============================================= -->
     <section class="individual-works">
       <div class="inner">
         <div class="section-title">
@@ -181,60 +194,61 @@
               alt="Work 01"
             />
           </div>
+
           <div class="work-card">
             <img
               src="assets/images/project/shinsagae/technical/tech-01-01.png"
-              alt="Work 05"
-            />
-          </div>
-          <div class="work-card">
-            <img
-              src="assets/images/project/section/output/01.png"
               alt="Work 02"
             />
           </div>
+
           <div class="work-card">
             <img
-              src="assets/images/project/ulsan/output/01.png"
+              src="assets/images/project/section/output/01.png"
               alt="Work 03"
             />
           </div>
+
           <div class="work-card">
             <img
-              src="assets/images/project/tunnel/output/10.png"
+              src="assets/images/project/ulsan/output/01.png"
               alt="Work 04"
             />
           </div>
-          <!-- 루프용 복사 -->
+
+          <div class="work-card">
+            <img
+              src="assets/images/project/tunnel/output/10.png"
+              alt="Work 05"
+            />
+          </div>
+
+          <!-- 무한 루프용 복사 -->
+
           <div class="work-card">
             <img
               src="assets/images/project/gwanghwa/output/out-01.png"
-              alt="Work 01"
+              alt=""
             />
           </div>
+
           <div class="work-card">
             <img
               src="assets/images/project/shinsagae/technical/tech-01-01.png"
-              alt="Work 05"
+              alt=""
             />
           </div>
+
           <div class="work-card">
-            <img
-              src="assets/images/project/section/output/01.png"
-              alt="Work 02"
-            />
+            <img src="assets/images/project/section/output/01.png" alt="" />
           </div>
+
           <div class="work-card">
-            <img
-              src="assets/images/project/ulsan/output/01.png"
-              alt="Work 03"
-            />
+            <img src="assets/images/project/ulsan/output/01.png" alt="" />
           </div>
+
           <div class="work-card">
-            <img
-              src="assets/images/project/tunnel/output/10.png"
-              alt="Work 04"
-            />
+            <img src="assets/images/project/tunnel/output/10.png" alt="" />
           </div>
         </div>
       </div>

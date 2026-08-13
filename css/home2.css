@@ -1,227 +1,310 @@
-/* =========================================
-   HOME (index.html) — Minimal Museum Style
-   common.css 를 건드리지 않고
-   home.css 에서만 홈 전용 스타일을 오버라이드합니다.
-   ========================================= */
-
-/* ── 홈은 헤더가 투명하게 올라타므로 main top-padding 제거 ── */
 main {
   padding-top: 0 !important;
 }
 
 /* =========================================
-   01. HERO — main-visual
-   ========================================= */
+    01 HERO
+    ========================================= */
+
 .main-visual {
-  height: 100vh;
-  min-height: 640px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* 타이틀을 하단에 */
-  align-items: stretch;
-  text-align: left;
-  padding: 0 48px 60px;
   position: relative;
+
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+
+  min-height: 720px;
+
   overflow: hidden;
+
   background: var(--bg-color);
 }
 
-/* 배경 로고 — 중앙에 희미하게 */
-.hero-bg-logo {
+/* =========================================
+    중앙 VIDEO SYMBOL
+    ========================================= */
+
+.hero-symbol {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(280px, 46vw, 640px);
+
+  top: 8%;
+  left: 60%;
+
+  width: min(72vw, 1180px);
+
+  aspect-ratio: 1080 / 670;
   height: auto;
-  opacity: 0.055;
-  filter: grayscale(1);
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
+
+  transform: translateX(-50%) scale(1.01);
+  transform-origin: center;
+
+  overflow: hidden;
+
+  z-index: 1;
+
+  -webkit-mask-image: url("../assets/images/common/lcsymbol.png");
+  mask-image: url("../assets/images/common/lcsymbol.png");
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
-/* 우상단 세로 레이블 */
+/* 영상 */
+
+.hero-symbol video {
+  position: absolute;
+
+  width: 102%;
+  height: 102%;
+
+  left: -1%;
+  top: -1%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: translateZ(0);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* =========================================
+    SEOUL — 2026
+    ========================================= */
+
 .hero-corner {
   position: absolute;
-  top: calc(var(--header-h) + 24px);
+
+  top: calc(var(--header-h) + 28px);
   right: 48px;
+
+  z-index: 3;
+
+  writing-mode: vertical-rl;
+
   font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.16em;
+
+  letter-spacing: 0.18em;
+
   color: var(--text-sub);
-  writing-mode: vertical-rl;
-  z-index: 1;
 }
 
-/* 하단 두-컬럼 레이아웃 */
-.hero-foot {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  width: 100%;
+/* =========================================
+    왼쪽 하단 COPY
+    ========================================= */
+
+.hero-copy {
+  position: absolute;
+
+  left: 72px;
+  bottom: 7.5vh;
+
+  width: min(650px, 48vw);
+
+  z-index: 3;
+
+  text-align: left;
+  margin: 0;
 }
 
-/* 메인 타이틀 */
-.hero-title {
-  font-size: clamp(68px, 11.5vw, 152px);
-  font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.05em;
+/* 빛을 쫓는 사람들 */
+
+.hero-copy h1 {
+  margin: 0 0 20px;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR",
+    sans-serif;
+
+  font-size: clamp(26px, 2vw, 34px);
+
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  letter-spacing: -0.045em;
+
   color: var(--text-main);
-  /* common.css 의 .main-visual h2 를 덮어씀 */
-  margin-bottom: 0;
 }
 
-/* common.css h2 기본값 리셋 (main-visual 안에서만) */
-.main-visual h2.hero-title {
-  font-size: clamp(68px, 11.5vw, 152px);
-  font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.05em;
-  margin-bottom: 0;
-}
+/* 설명 */
 
-/* 우측 서브 */
-.hero-sub {
-  padding-bottom: 8px;
-  text-align: right;
-  max-width: 220px;
-}
-.hero-sub p {
-  font-size: 13px;
-  font-weight: 300;
+.hero-copy p {
+  margin: 0 0 100px;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
   line-height: 1.9;
+
+  letter-spacing: -0.015em;
+
   color: var(--text-sub);
-  margin-bottom: 28px;
+
+  word-break: keep-all;
 }
 
-/* 링크 버튼 */
+/* =========================================
+    VIEW PROJECTS
+    ========================================= */
+
 .hero-link {
   display: inline-flex;
+
   align-items: center;
+
   gap: 8px;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid rgba(29, 29, 31, 0.28);
+
   font-size: 10.5px;
+
   font-weight: 600;
-  letter-spacing: 0.12em;
+
+  letter-spacing: 0.14em;
+
   text-transform: uppercase;
+
   color: var(--text-main);
-  border-bottom: 1px solid rgba(29, 29, 31, 0.25);
-  padding-bottom: 4px;
+
   transition: gap 0.3s ease, border-color 0.3s ease;
 }
+
 .hero-link:hover {
-  gap: 14px;
+  gap: 15px;
+
   border-color: var(--text-main);
+
   color: var(--text-main);
 }
+
 .hero-link svg {
   width: 11px;
   height: 11px;
+
   flex-shrink: 0;
 }
 
-/* 하단 메타 — 중앙 */
-.hero-meta {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 0;
-  font-size: 9.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.28);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 1;
-}
-.hero-meta span {
-  padding: 0 16px;
-  position: relative;
-}
-.hero-meta span:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 1px;
-  height: 10px;
-  background: rgba(29, 29, 31, 0.1);
-  transform: translateY(-50%);
-}
+/* =========================================
+    SCROLL
+    ========================================= */
 
-/* 스크롤 힌트 — 우하단 */
 .scroll-guide {
   position: absolute;
-  bottom: 32px;
+
   right: 48px;
+  bottom: 30px;
+
   display: flex;
+
   align-items: center;
+
   gap: 10px;
-  animation: none; /* common.css bounce 제거 */
-  z-index: 1;
+
+  z-index: 3;
 }
+
 .scroll-line {
   width: 28px;
   height: 1px;
+
   background: var(--text-sub);
+
   opacity: 0.35;
 }
+
 .scroll-guide span {
   font-size: 8.5px;
+
   letter-spacing: 0.22em;
+
   text-transform: uppercase;
+
   color: var(--text-sub);
+
   opacity: 0.55;
 }
 
 /* =========================================
-   02. STICKY SCENES — sticky-container
-   ========================================= */
+    02 STICKY SCENES
+    ========================================= */
+
 .sticky-container {
   height: 500vh;
+
   background-color: var(--bg-color);
 }
 
 .sticky-frame {
   position: sticky;
+
   top: 0;
+
   width: 100%;
   height: 100vh;
+
   overflow: hidden;
 }
 
 .scene {
   position: absolute;
+
   inset: 0;
+
   opacity: 0;
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+
   display: flex;
+
   justify-content: center;
+
   background-color: var(--bg-color);
+
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .scene.active {
   opacity: 1;
+
   z-index: 10;
 }
 
-/* 배경 이미지 */
+/* =========================================
+    SCENE IMAGE
+    ========================================= */
+
 .scene .bg-img {
   position: absolute;
+
   inset: 0;
+
   background-size: cover;
+
   background-position: center;
 }
-/* 하단 그라데이션 오버레이 */
+
 .scene .bg-img::after {
   content: "";
+
   position: absolute;
+
   inset: 0;
+
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.5) 0%,
@@ -230,367 +313,719 @@ main {
   );
 }
 
-/* scene-2~4 플레이스홀더 배경색 */
 .scene-2 .bg-img {
   background-color: #181510;
 }
+
 .scene-3 .bg-img {
   background-color: #0d1118;
 }
+
 .scene-4 .bg-img {
   background-color: #0e1310;
 }
 
-/* 씬 번호 */
+/* =========================================
+    SCENE NUMBERS
+    ========================================= */
+
 .scene-num {
   position: absolute;
+
   top: 40px;
   left: 48px;
+
   z-index: 20;
+
   font-size: 9.5px;
+
   font-weight: 500;
+
   letter-spacing: 0.2em;
+
   color: rgba(255, 255, 255, 0.3);
 }
 
-/* 인트로 텍스트 (scene-1) */
+/* =========================================
+    SCENE 1 INTRO
+    ========================================= */
+
 .scene .content-text {
   position: absolute;
+
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
-  z-index: 20;
-  text-align: center;
+
   width: 100%;
-}
-.scene .content-text .scene-eyebrow {
-  font-size: 9.5px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-sub);
-  margin-bottom: 24px;
-}
-.scene .content-text h3 {
-  font-size: clamp(32px, 5vw, 62px);
-  font-weight: 300;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-  color: var(--text-main);
-  margin-bottom: 0;
-}
-.scene .content-text h3 strong {
-  font-weight: 700;
+
+  z-index: 20;
+
+  text-align: center;
 }
 
-/* 하단 플로팅 캡슐 (scene-2~4) */
+.scene .content-text .scene-eyebrow {
+  margin-bottom: 18px;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.24em;
+
+  color: var(--text-sub);
+}
+
+.scene .content-text h3 {
+  margin: 0;
+
+  font-size: clamp(36px, 2vw, 50px);
+
+  font-weight: 400;
+
+  letter-spacing: -0.005em;
+
+  line-height: 1.3;
+
+  color: var(--text-main);
+}
+
+.scene .content-text h3 strong {
+  font-weight: 400;
+}
+
+/* =========================================
+    SCENE CONTENT BOX
+    ========================================= */
+
 .scene .content-box {
   position: absolute;
+
   bottom: 7%;
   left: 50%;
+
   transform: translateX(-50%);
+
   z-index: 20;
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 16px;
+
   padding: 10px 22px;
+
   border-radius: 100px;
+
   background: rgba(255, 255, 255, 0.1);
+
   backdrop-filter: blur(16px);
+
   -webkit-backdrop-filter: blur(16px);
+
   border: 1px solid rgba(255, 255, 255, 0.14);
+
   white-space: nowrap;
-  width: auto;
 }
 
-/* 캡슐 타이틀 */
 .scene .content-box h3 {
-  font-size: 15px;
-  font-weight: 500;
-  color: #fff;
-  letter-spacing: -0.01em;
   margin: 0;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  letter-spacing: -0.01em;
+
+  color: #fff;
 }
 
-/* 캡슐 버튼 */
+/* =========================================
+    VIEW BUTTON
+    ========================================= */
+
 .btn-view {
   display: inline-flex;
+
   align-items: center;
+
   gap: 5px;
+
   padding: 6px 16px;
+
   border-radius: 100px;
+
   background: rgba(255, 255, 255, 0.88);
+
   color: var(--text-main);
+
   font-size: 10.5px;
+
   font-weight: 600;
+
   letter-spacing: 0.07em;
+
   transition: background 0.2s ease;
 }
+
 .btn-view:hover {
   background: #fff;
+
   color: var(--text-main);
-  transform: none;
 }
+
 .btn-view svg {
   width: 9px;
   height: 9px;
 }
 
-/* 인디케이터 */
+/* =========================================
+    INDICATORS
+    ========================================= */
+
 .indicators {
   position: absolute;
+
   right: 32px;
+
   top: 50%;
+
   transform: translateY(-50%);
+
   z-index: 30;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 9px;
 }
+
 .indicators .dot {
   width: 4px;
+
   height: 4px;
+
   border-radius: 50%;
+
   background: rgba(255, 255, 255, 0.28);
+
   transition: background 0.3s, transform 0.3s;
-  box-shadow: none;
 }
+
 .indicators .dot.active {
   background: rgba(255, 255, 255, 0.9);
+
   transform: scale(1.5);
 }
-/* scene-1 에서는 어두운 점 */
+
 .indicators.dots-light .dot {
   background: rgba(29, 29, 31, 0.15);
 }
+
 .indicators.dots-light .dot.active {
   background: var(--text-main);
 }
 
 /* =========================================
-   03. CONTACT CTA — bottom-contact
-   ========================================= */
+    03 CONTACT
+    ========================================= */
+
 .bottom-contact {
   min-height: 50vh;
+
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
+
   align-items: center;
-  background: var(--bg-color);
-  text-align: center;
+
   padding: 80px 48px;
+
+  text-align: center;
+
+  background: var(--bg-color);
+
   border-top: 1px solid rgba(29, 29, 31, 0.08);
 }
+
 .bottom-contact h2 {
-  font-size: clamp(28px, 4.2vw, 52px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
   margin-bottom: 40px;
+
+  font-size: clamp(36px, 2vw, 50px);
+
+  font-weight: 400;
+
+  letter-spacing: -0.005em;
+
+  line-height: 1.3;
+
   color: var(--text-main);
 }
+
 .btn-contact {
   display: inline-flex;
+
   align-items: center;
+
   gap: 8px;
+
   font-size: 10.5px;
+
   font-weight: 600;
+
   letter-spacing: 0.14em;
+
   text-transform: uppercase;
+
   color: var(--text-main);
+
   border-bottom: 1px solid var(--text-main);
+
   padding-bottom: 4px;
+
   transition: gap 0.3s ease;
 }
+
 .btn-contact:hover {
   gap: 16px;
-  color: var(--text-main);
 }
+
 .btn-contact svg {
   width: 12px;
+
   height: 12px;
 }
 
 /* =========================================
-   04. INDIVIDUAL WORKS MARQUEE
-   ========================================= */
+    04 INDIVIDUAL WORKS
+    ========================================= */
+
 .individual-works {
   padding: 120px 0;
-  background-color: #fff;
+
+  background: #fff;
+
   overflow: hidden;
+
   border-top: 1px solid rgba(29, 29, 31, 0.08);
 }
+
 .individual-works .section-title {
-  text-align: left;
   margin-bottom: 56px;
+
   display: flex;
+
   align-items: baseline;
+
   justify-content: space-between;
 }
+
 .individual-works .section-title span {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-sub);
   order: 2;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color: var(--text-sub);
 }
+
 .individual-works .section-title h3 {
-  font-size: clamp(18px, 2.5vw, 26px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-main);
   order: 1;
+
+  font-size: clamp(18px, 2.5vw, 26px);
+
+  font-weight: 500;
+
+  letter-spacing: -0.02em;
+
+  color: var(--text-main);
 }
+
+/* =========================================
+    MARQUEE
+    ========================================= */
 
 .marquee-container {
   width: 100%;
+
   display: flex;
+
   overflow: hidden;
 }
+
 .marquee-track {
   display: flex;
+
   gap: 16px;
+
   width: max-content;
+
   animation: scrollMarquee 40s linear infinite;
 }
+
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
 @keyframes scrollMarquee {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-50% - 8px));
   }
 }
 
+/* =========================================
+    WORK CARDS
+    ========================================= */
+
 .work-card {
+  position: relative;
+
   width: 420px;
   height: 290px;
+
   border-radius: 12px;
+
   overflow: hidden;
+
   flex-shrink: 0;
-  position: relative;
-  /* 이미지 없을 때 폴백 색상 */
+
   background: #1c1710;
-}
-.work-card:nth-child(2n) {
-  background: #0d1320;
-}
-.work-card:nth-child(3n) {
-  background: #16100f;
-}
-.work-card:nth-child(4n) {
-  background: #0f1610;
-}
-.work-card:nth-child(5n) {
-  background: #1a1414;
 }
 
 .work-card img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
-  transition: transform 0.5s ease;
+
   display: block;
+
+  transition: transform 0.5s ease;
 }
+
 .work-card:hover img {
   transform: scale(1.04);
 }
 
 /* =========================================
-   RESPONSIVE
-   ========================================= */
+    TABLET
+    ========================================= */
+
+/* =========================================
+    NARROW DESKTOP / SMALL LAPTOP
+    - 폭은 줄었는데 세로가 긴 화면에서
+      심볼과 카피 사이가 과하게 벌어지는 문제 보정
+    ========================================= */
+
+@media (max-width: 1280px) and (min-width: 1025px) {
+  .hero-symbol {
+    top: 10%;
+    left: 57%;
+    width: min(78vw, 930px);
+  }
+
+  .hero-copy {
+    left: 5vw;
+    bottom: clamp(95px, 11vh, 135px);
+    width: min(560px, 52vw);
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(28px, 2.4vw, 32px);
+  }
+
+  .hero-copy p {
+    max-width: 560px;
+  }
+
+  .hero-corner {
+    right: 36px;
+  }
+}
+
+/* =========================================
+    TABLET
+    ========================================= */
+
 @media (max-width: 1024px) {
+  .main-visual {
+    min-height: 700px;
+  }
+
+  .hero-symbol {
+    top: 11%;
+    left: 54%;
+    width: min(82vw, 820px);
+  }
+
+  .hero-copy {
+    left: 5vw;
+    bottom: clamp(72px, 9vh, 105px);
+    width: min(600px, 64vw);
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(26px, 3vw, 30px);
+  }
+
+  .hero-copy p {
+    max-width: 560px;
+  }
+
+  .hero-corner {
+    right: 30px;
+  }
+
   .individual-works {
     padding: 80px 0;
   }
+
   .work-card {
     width: 360px;
     height: 250px;
   }
 }
 
+/* =========================================
+    MOBILE
+    ========================================= */
+
 @media (max-width: 768px) {
-  /* Hero */
   .main-visual {
-    padding: 0 24px 52px;
+    height: 100svh;
+    min-height: 680px;
   }
+
+  .hero-symbol {
+    top: 15%;
+    left: 50%;
+    width: 92vw;
+  }
+
   .hero-corner {
     display: none;
   }
-  .hero-foot {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 28px;
-  }
-  .hero-sub {
-    text-align: left;
-    max-width: none;
-  }
-  .hero-meta {
-    display: none;
-  }
-  .scroll-guide {
-    right: 24px;
+
+  .hero-copy {
+    left: 24px;
+    bottom: 64px;
+    width: calc(100% - 48px);
   }
 
-  /* Scenes */
+  .hero-copy h1 {
+    margin-bottom: 16px;
+    font-size: 25px;
+  }
+
+  .hero-copy p {
+    max-width: 520px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .scroll-guide {
+    right: 24px;
+    bottom: 24px;
+  }
+
   .scene-num {
     left: 24px;
   }
+
   .scene .content-box {
     padding: 8px 16px;
     gap: 12px;
   }
+
   .scene .content-box h3 {
     font-size: 14px;
   }
+
   .btn-view {
     padding: 5px 12px;
     font-size: 10px;
   }
+
   .scene .content-text h3 {
     font-size: 32px;
   }
+
   .indicators {
     right: 16px;
   }
 
-  /* Contact */
   .bottom-contact {
     padding: 60px 24px;
   }
 
-  /* Works */
   .individual-works .section-title {
     flex-direction: column;
     gap: 6px;
   }
+
   .individual-works .section-title span {
     order: 1;
   }
+
   .individual-works .section-title h3 {
     order: 2;
   }
+
   .work-card {
     width: 280px;
     height: 195px;
     border-radius: 10px;
   }
+
   .marquee-track {
     gap: 12px;
   }
 }
 
+/* =========================================
+    SMALL MOBILE
+    ========================================= */
+
 @media (max-width: 480px) {
   .main-visual {
-    padding: 0 20px 48px;
+    min-height: 640px;
   }
+
+  .hero-symbol {
+    top: 16%;
+    left: 50%;
+    width: 94vw;
+  }
+
+  .hero-copy {
+    left: 20px;
+    bottom: 54px;
+    width: calc(100% - 40px);
+  }
+
+  .hero-copy h1 {
+    font-size: 23px;
+  }
+
+  .hero-copy p {
+    font-size: 12.5px;
+  }
+
   .work-card {
     width: 240px;
     height: 168px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-light-canvas {
+    display: none;
+  }
+}
+/* =========================================
+  GLOBAL MOUSE LIGHT
+  ========================================= */
+
+.global-light-canvas {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  pointer-events: none;
+
+  z-index: 4500;
+
+  filter: blur(4px);
+}
+
+/* =========================================
+    GLOBAL BOTTOM SCROLL GLOW
+    ========================================= */
+
+.global-bottom-glow {
+  position: fixed;
+
+  left: -5%;
+  bottom: -25px;
+
+  width: 110%;
+  height: 210px;
+
+  pointer-events: none;
+  z-index: 4400;
+
+  background: radial-gradient(
+    ellipse at center bottom,
+    rgba(168, 243, 251, 0.484) 0%,
+    rgba(215, 242, 255, 0.22) 28%,
+    rgba(225, 247, 255, 0.12) 48%,
+    rgba(235, 250, 255, 0.055) 65%,
+    rgba(245, 253, 255, 0.015) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  filter: blur(28px);
+}
+
+/* 페이지 마지막에 도달했을 때 */
+
+.global-bottom-glow.is-hidden {
+  opacity: 0;
+}
+
+/* 모바일에서는 커서 빛 X */
+
+@media (max-width: 768px) {
+  .global-light-canvas {
+    display: none;
+  }
+
+  .global-bottom-glow {
+    height: 70px;
+  }
+}
+
+/* =========================================
+HEADER HAMBURGER VISIBILITY FIX
+- PC / full desktop: 절대 숨김
+- 768px 이하에서만 자동 노출
+- nav-compact 클래스가 PC에서 붙어도 햄버거가 나오지 않음
+========================================= */
+
+header .btn-menu,
+header.nav-compact .btn-menu {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  header .btn-menu,
+  header.nav-compact .btn-menu {
+    display: block !important;
+  }
+
+  header.nav-compact .btn-menu {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 4000;
   }
 }
